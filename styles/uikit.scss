@@ -1,0 +1,121 @@
+@import './helpers/colors.scss';
+@import './helpers/mixins.scss';
+@import "uikit/src/scss/variables-theme.scss";
+
+
+$global-link-color: $c-brand-blue;
+$global-link-hover-color: rgba($c-brand-blue, 0.8);
+$global-color: $c-shark;
+$global-primary-background: $c-brand-blue;
+$global-secondary-background: $c-nucleus;
+$global-border: $c-medium-gray;
+$global-small-font-size: 0.8rem;
+$text-large-font-size: 18px;
+$text-large-line-height: 25px;
+$text-muted-color: $c-medium-gray;
+
+$width-small-width: 200px;
+$navbar-nav-item-font-size: 15px;
+$navbar-background: rgba($c-white, .85);
+$navbar-dropdown-margin: 0;
+$navbar-nav-item-color: $global-color;
+$navbar-nav-item-hover-color: $c-medium-gray;
+$navbar-nav-item-onclick-color: $c-medium-gray;
+$navbar-nav-item-active-color: $c-medium-gray;
+$subnav-item-color: $c-white;
+$subnav-item-hover-color: $c-snow;
+$subnav-pill-item-color: $c-brand-blue;
+$subnav-pill-item-hover-background: $c-crisp-blue;
+$subnav-pill-item-onclick-color: $c-brand-blue;
+$subnav-pill-item-active-background: $c-crisp-blue;
+$subnav-pill-item-active-color: $c-brand-blue;
+$subnav-pill-item-padding-horizontal: 15px;
+
+$height-small-height: 200px;
+$background-muted-background: $c-crisp-blue;
+$card-body-padding-horizontal: 30px;
+$card-body-padding-vertical: 25px;
+$card-body-padding-horizontal-l: 30px;;
+$card-body-padding-vertical-l: 25px;
+
+$offcanvas-bar-color-mode: dark;
+$offcanvas-bar-background: $c-white;
+
+$nav-primary-item-font-size: 17px;
+$nav-primary-item-line-height: 19px;
+$nav-primary-item-color: $c-nucleus;
+$nav-primary-item-hover-color: $c-medium-gray;
+$nav-primary-item-active-color: $c-medium-gray;
+$nav-primary-divider-border: $c-metal;
+$nav-default-item-color: $c-nucleus;
+$nav-default-item-hover-color: $c-medium-gray;
+$nav-default-item-active-color: $c-medium-gray;
+$nav-default-divider-border: $c-metal;
+$nav-primary-sublist-item-color: $c-nucleus;
+$nav-primary-sublist-item-hover-color: $c-medium-gray;
+$nav-item-padding-horizontal: 20px;
+$nav-item-padding-vertical: 14px;
+$nav-sublist-padding-left: 40px;
+$nav-sublist-padding-vertical: 0;
+$nav-sublist-item-padding-vertical: 7px;
+
+$tab-item-color: $c-brand-blue;
+$tab-item-hover-color: $c-brand-orange;
+$tab-item-active-color: $c-brand-orange;
+$list-divider-border: $c-french-gray;
+
+$button-font-size: 16px;
+$button-secondary-background: $c-crisp-blue;
+
+$text-primary-color: $c-brand-blue;
+$text-success-color: $c-brand-green;
+$text-warning-color: $c-brand-orange;
+$text-danger-color: $c-brand-red;
+$inverse-global-color: $c-white;
+$search-icon-color: $c-brand-blue; 
+$navbar-nav-item-height: 80px;
+$height-large-height: 700px;
+$height-small-height: 170px;
+$grid-small-gutter-horizontal: 7px;
+$grid-small-gutter-vertical: 7px;
+$overlay-default-background: rgba($c-white, 0.9) ;
+$overlay-primary-background: rgba($c-brand-blue, 0.6) ;
+$padding-small-padding: 30px;
+$button-line-height: 42px;
+$global-control-height: 46px;
+$width-medium-width: 375px;
+$width-xlarge-width: 520px;
+
+$table-divider-border-width: 2px;
+$table-divider-border: $c-metal;
+$global-font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+@import "uikit/src/scss/uikit.scss";
+@import "./components/background.scss";
+@import "./components/base.scss";
+@import "./components/blockquote.scss";
+@import "./components/body.scss";
+@import "./components/button.scss";
+@import "./components/card.scss";
+@import "./components/circle.scss";
+@import "./components/figure.scss";
+@import "./components/filter.scss";
+@import "./components/form.scss";
+@import "./components/icon.scss";
+@import "./components/link.scss";
+@import "./components/list.scss";
+@import "./components/margin.scss";
+@import "./components/marker.scss";
+@import "./components/modal.scss";
+@import "./components/nav.scss";
+@import "./components/navbar.scss";
+@import "./components/overlay.scss";
+@import "./components/padding.scss";
+@import "./components/section.scss";
+@import "./components/sticky.scss";
+@import "./components/subnav.scss";
+@import "./components/tab.scss";
+@import "./components/table.scss";
+@import "./components/text.scss";
+@import "./components/utility.scss";
+@import "./components/width.scss";
+

@@ -1,0 +1,55 @@
+.uk-navbar-nav > li > a {
+  font-weight: 600;
+  padding: 0 8px;
+  text-transform: uppercase;
+  font-family: $global-font-family;
+  @include l {
+    padding: 0 15px;
+  }
+}
+.uk-navbar-dropdown {
+  box-shadow: none;
+  padding: 0;
+  &-nav {
+    > li {
+      &.uk-active {
+        > a {
+          &:hover {
+            background-color: $c-sky-blue;
+          }
+        }
+      }
+      > a {
+        color: $c-white;
+        background-color: $c-medium-gray;
+        font-size: 17px;
+        padding: 8px 12px;
+        font-weight: 600;
+
+        &:hover, &:focus {
+          color: $c-white;
+          background-color: $c-sky-blue;
+        }
+      }
+    }
+  }
+}
+.uk-navbar-right {
+  li {
+    a {
+      font-size: 12px;
+      font-weight: 400;
+      .icomoon-menu {
+        font-size: 30px;
+      }
+      .fa-sign-out {
+        font-size: 20px;
+        margin-right: 6px;
+      }
+      .icomoon-message-square, .icomoon-lock {
+        font-size: 17px;
+        margin-right: 6px;
+      }
+    }
+  }
+}

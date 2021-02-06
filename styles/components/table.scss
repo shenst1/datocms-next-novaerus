@@ -1,0 +1,151 @@
+.uk-table {
+  th {
+    @extend h4;
+    text-align: center;
+    text-transform: none;
+    margin: 0 !important
+  }
+  td {
+    @extend p;
+    margin: 0 !important;
+    div[class^="icomoon-"] {
+      font-size: 32px;
+      margin-left: 8px;
+    }
+  }
+}
+
+.research-links-header{
+  background-color: #00a7bb;
+  th{
+    color: white;
+  }
+}
+
+.research-table-body{
+  a {
+    height: 100%;
+    width: 100%;
+    color: black;
+  }
+  .link-style{
+    color: #00A5B9;
+    font-weight: bold;
+  }
+}
+
+.table-link-container{
+  display: flex;
+  margin-bottom: 5px;
+  table {
+    table-layout: fixed;
+    margin: 0;
+  }
+  th {
+    text-align: left;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+  td {
+    overflow: visible;
+  }
+
+  h3{
+    font-size: 20px;
+  }
+
+  .image-section{
+    padding: 20px 10px 20px 30px;
+  }
+
+  .outer-image-section{
+    justify-content: flex-start;
+  }
+
+  .section-name{
+    margin-bottom: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &>div:nth-child(1) {
+    background-color: #e9e9e9;
+    text-transform: uppercase;
+    display: flex;
+  }
+  @media screen and (max-width: 1000px) {
+    th {
+      font-size: 15px;
+    }
+  }
+  @media screen and (min-width: 681px) {
+    &>div:nth-child(1) {
+      min-width: 34% !important;
+      align-items: center;
+    }
+    tr {
+      &:last-of-type{
+        border-bottom: 2px solid #e9e9e9;
+      }
+      &>th:first-of-type {
+        width: 36%;
+        padding-left: 50px;
+      }
+      &>td:first-of-type {
+        padding-left: 50px;
+      }
+    }
+  }
+  @media screen and (max-width: 680px){
+    flex-direction: column;
+    &>div:nth-child(1) {
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100px;
+    }
+    .hide-mobile{
+      display: none;
+    }
+    .image-section{
+      padding: 20px 20px 20px 0;
+    }
+    .outer-image-section{
+      padding-left: 30px;
+    }
+    tr {
+      &>td:first-of-type {
+        padding-left: 30px;
+      }
+      &>th:first-of-type {
+        padding-left: 30px;
+        width: 50%;
+      }
+    }
+  }
+
+  .show-mid {
+    display: none;
+  }
+
+  @media screen and (min-width: 681px) and (max-width: 1200px){
+    .show-mid {
+      display: inline;
+    }
+    .hide-mid {
+      display: none;
+    }
+    .image-section {
+      padding: 20px 10px 20px 10px !important;
+    }
+  }
+  @media screen and (max-width: 475px){
+    .show-mid {
+      display: inline;
+    }
+    .hide-mid {
+      display: none;
+    }
+  }
+}

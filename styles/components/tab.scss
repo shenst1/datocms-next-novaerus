@@ -1,0 +1,14 @@
+.uk-tab {
+
+  &:before {
+    border-bottom-color: $c-french-gray;
+  }
+  > * > a {
+    font-size: 16px;
+    font-weight: 600;
+    border-width: 2px;
+  }
+  > .uk-active > a {
+    border-color: $c-brand-orange;
+  }
+}

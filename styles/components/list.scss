@@ -1,0 +1,50 @@
+ul.nov-list, .nov-list ul {
+  list-style-type: none;
+  padding-left: 20px;
+  margin-top: 12px;
+  @extend p;
+  > li {
+    position: relative;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    &:before {
+      background-color: $c-brand-orange;
+      border-radius: 50%;
+      content: "";
+      height: 4px;
+      left: -1em;
+      position: absolute;
+      top: 0.5em;
+      margin-top: 3px;
+      width: 4px;
+    }
+  }
+}
+ul.nov-list-danger, .nov-list-danger ul {
+  > li {
+    &:before {
+      background-color: $c-brand-red;
+    }
+  }
+}
+ul.nov-list-success, .nov-list-success ul {
+  > li {
+    &:before {
+      background-color: $c-brand-green;
+    }
+  }
+}
+
+.uk-list {
+  li {
+    @extend p;
+    line-height: 17px;
+  }
+  &-thin {
+    li {
+      font-size: 16px;
+      margin: 0 0 15px 0;
+      font-weight: 400;
+    }
+  }
+}

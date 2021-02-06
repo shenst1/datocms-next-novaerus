@@ -1,0 +1,11 @@
+.uk-overlay-secondary {
+  background-color: rgba($c-nucleus, .5);
+}
+.uk-overlay-tertiary {
+  background-color: rgba($c-nucleus, .25);
+}
+.nov-overlay-reset-m {
+  @include m {
+    background-color: transparent !important;
+  }
+}

@@ -1,0 +1,12 @@
+a, .uk-link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+  .uk-light & {
+    color: $global-link-color;
+    &:hover, &:focus {
+      color: $global-link-hover-color;
+    }
+  }
+}

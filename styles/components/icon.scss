@@ -1,0 +1,46 @@
+.icomoon {
+  &-folder {
+    font-size: 28px;
+    color: $c-brand-blue;
+  }
+  &-alert-circle, &-low-energy-plasma, &-minus-circle, &-number1, &-nanostrike-plasma {
+    color: $c-brand-red;
+    &:before {
+      color: $c-brand-red;
+    }
+  }
+  &-check-circle, &-number5 {
+    color: $c-brand-green;
+  }
+  &-large-rooms, &-medium-rooms, &-small-rooms, &-number2, &-number3, &-number4 {
+    &:before {
+      color: $c-brand-orange;
+    }
+  }
+  &-fan-speed-control, &-triple-stage-filter, &-number5 {
+    &:before {
+      color: $c-brand-green;
+    }
+  }
+}
+
+.nov-icon {
+  &-resource {
+    font-size: 40px;
+    &-small {
+      font-size: 25px;
+    }
+  }
+  &-social {
+    font-size: 27px;
+  }
+  &-hero {
+    font-size: 48px;
+  }
+  &-feature {
+    font-size: 60px;
+  }
+  &-xxl {
+    font-size: 80px;
+  }
+}

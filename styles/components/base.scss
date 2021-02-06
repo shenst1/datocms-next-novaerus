@@ -1,0 +1,109 @@
+
+// HACK: for some reason the global font family variable isn't working
+html {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h1, .uk-h1, h2, .uk-h2, h3, .uk-h3, h4, .uk-table th, .uk-h4, h5, .uk-h5, h6, .uk-h6, .uk-heading-small, .uk-heading-medium, .uk-heading-large, .uk-heading-xlarge, .uk-heading-2xlarge {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+p {
+  font-size: 15px;
+  line-height: 19px;
+  font-weight: 300;
+  @include m {
+    font-size: 17px;
+    line-height: 23px;
+  }
+  .uk-button {
+    font-weight: 400;
+  }
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 40px;
+  color: $c-nucleus;
+  font-weight: 200;
+  @include m {
+    font-size: 60px;
+    line-height: 60px;
+  }
+  > span {
+    color: $c-sky-blue;
+    margin: 0 5px;
+  }
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 200;
+  color: $c-nucleus;
+  @include s {
+    font-size: 42px;
+    line-height: 48px;
+  }
+}
+
+h3 {
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: 300;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 18px;
+  color: $c-nucleus;
+  @include s {
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+
+h5 {
+  font-size: 18px;
+  line-height: 18px;
+  color: $c-nucleus;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+
+dl {
+  dt {
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  dd {
+    font-size: 14px;
+  }
+}
+
+em {
+  color: $global-color;
+}
+
+hr, .uk-hr {
+  border-top-color: $c-metal;
+  .uk-light & {
+    border-top-color: $c-white;
+  }
+  .uk-dark & {
+    border-top-color: $c-nucleus;
+  }
+}
+.uk-hr-medium {
+  border-width: 2px;
+}
+
+small {
+  font-weight: 200;
+}

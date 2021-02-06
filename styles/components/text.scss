@@ -1,0 +1,52 @@
+.nov-text-semibold {
+  font-weight: 600 !important;
+}
+.nov-text-workdbreak {
+  word-break: break-all;
+}
+
+.uk-text-large {
+  letter-spacing: 1px;
+  * {
+    font-size: $text-large-font-size;
+    letter-spacing: 1px;
+  }
+}
+.nov-text {
+  &-low-energy-plasma, &-nanostrike-plasma {
+    color: $c-brand-red;
+  }
+  &-large-rooms, &-medium-rooms, &-small-rooms {
+    color: $c-brand-orange;
+  }
+  &-fan-speed-control, &-triple-stage-filter {
+    color: $c-brand-green;
+  }
+}
+.uk-text-primary {
+  .uk-light & {
+    color: $c-sky-blue !important;
+  }
+}
+
+.nov-text-shadow {
+  text-shadow: 1px 1px 1px $c-shark
+}
+
+small, .uk-text-small {
+  p {
+    font-size: .9rem;
+    line-height: 1.35;
+  }
+}
+
+footer p a {
+  color: $c-cerulean;
+  &:hover {
+    color: rgba($c-cerulean, 0.8);
+  }
+}
+
+sup {
+  font-size: 75% !important;
+}

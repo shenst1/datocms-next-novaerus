@@ -1,0 +1,16 @@
+.nov-marker {
+  border-radius: 50%;
+  img {
+    max-width: 60px;
+    min-width: 35px;
+    width: 5vw;
+    transition: width .1s ease-in-out;
+  }
+  &:hover {
+    img {
+      max-width: 70px;
+      min-width: 35px;
+      width: 5.3vw;
+    }
+  }
+}

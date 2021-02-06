@@ -1,0 +1,24 @@
+blockquote {
+  position: relative;
+  padding: 2em .5em;
+  &:before, &:after {
+    color: $c-brand-green;
+    position: absolute;
+    font-size: 4.5em;
+    line-height: 1;
+  }
+  &:before {
+    top: 0;
+    left: 0;
+    content: "\201C";
+  }
+  &:after {
+    float: right;
+    right:0;
+    bottom:-0.5em;
+    content: "\201D";
+  }
+  p {
+    padding: 8px;
+  }
+}

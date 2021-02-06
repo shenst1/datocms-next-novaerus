@@ -1,0 +1,45 @@
+[class*='uk-button'] {
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+.uk-button-secondary {
+  background-color: transparent;
+  border-width: 2px;
+  border-color: $c-brand-blue;
+  color: $c-brand-blue;
+  font-weight: 600;
+  font-size: 14px;
+  &:hover, &:focus {
+    background-color: transparent;
+    border-color: $c-sky-blue;
+    color: $c-sky-blue;
+  }
+}
+
+
+.uk-button-default {
+  border-width: 2px;
+  border-color: $c-white;
+  &:hover, &:focus {
+    color: rgba($c-white, 0.8);
+    border-color: rgba($c-white, 0.8);
+  }
+  .uk-light & {
+    &:hover, &:focus {
+      color: rgba($c-white, 0.8);
+      border-color: rgba($c-white, 0.8);
+    }
+  }
+}
+
+.nov-button-icon-link {
+  font-size: 18px;
+  &:hover {
+    text-decoration: none;
+  }
+  > i {
+    margin-left: 6px;
+    margin-right: 6px;
+    font-size: 25px;
+  }
+}

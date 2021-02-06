@@ -1,0 +1,25 @@
+.nov-border {
+  border-right: 3px solid $c-brand-blue;
+}
+
+.nov-height-landing {
+  min-height: 530px;
+  height: calc(35vh + 6vw);
+  @include m {
+    height: 700px;
+  }
+}
+.nov-height-hero {
+  min-height: 370px;
+  height: calc(35vh + 6vw);
+  @include m {
+    height: 700px;
+  }
+}
+.nov-height-subhero {
+  min-height: 370px;
+  height: calc(35vh + 10vw);
+  @include m {
+    height: 500px;
+  }
+}

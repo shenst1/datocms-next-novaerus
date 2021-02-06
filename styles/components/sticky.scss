@@ -1,0 +1,13 @@
+.uk-sticky {
+  &-remove-placeholder {
+    width: 100% !important;
+    + .uk-sticky-placeholder {
+      @include m {
+        position: absolute;
+      }
+    }
+  }
+}
+.uk-sticky-placeholder {
+  height: $navbar-nav-item-height;
+}

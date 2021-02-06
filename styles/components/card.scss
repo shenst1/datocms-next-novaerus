@@ -1,0 +1,49 @@
+.uk-card {
+  &-title {
+    color: $c-brand-blue;
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+  &-body {
+    &:hover {
+      background-color: rgba($c-crisp-blue, .5 );
+      .uk-card-title {
+        text-decoration: underline;
+      }
+      .nov-circle {
+        border-color: $c-brand-blue;
+        > i {
+          color: $c-brand-blue;
+        }
+      }
+    }
+    &-small {
+      padding: 16px 20px;
+    }
+  }
+  &-default {
+    &.uk-card-body, .uk-card-body {
+      &:hover {
+        background-color: $c-white;
+        .uk-card-title {
+          text-decoration: none;
+        }
+      }
+    }
+    .uk-card-title {
+      color: $c-brand-blue;
+      font-size: 18px;
+      line-height: 20px;
+      font-weight: 600;
+    }
+  }
+}
+
+
+.nov-card {
+  padding: 5px 0 5px 20px;;
+  &-border {
+    border-left: 2px solid $global-border;
+  }
+}

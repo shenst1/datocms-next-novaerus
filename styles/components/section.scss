@@ -1,0 +1,18 @@
+.uk-section {
+  &-small {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    @include s {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+}
+.nov-section-ruled {
+  border-bottom: 1px solid $c-metal;
+}
+.nov-tight-sections {
+  .uk-section + .uk-section {
+    padding-top: 0;
+  }
+}
