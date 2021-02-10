@@ -87,7 +87,6 @@ export default function Index({ subscription }) {
         return <WidgetProductsPreview widget={widget} />
         break;
       case "WidgetHeroCtaRecord":
-        console.log("we ar trying to render")
         return <WidgetHeroCTA widget={widget} />
         break;
     }

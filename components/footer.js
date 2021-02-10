@@ -4,7 +4,6 @@ import { Image } from 'react-datocms'
 
 export default function Footer({footer}) {
   const {subscribeHeader, connectHeader, buttonTitle, navigation, socialHeader, socialLinks, partnerHeader, lowerNavigation, copyright, disclaimer, partners } = footer;
-  console.log("my footer coming through", footer)
   return (
     <>
       <div className="uk-section-small nov-background-ultra-muted">
@@ -12,7 +11,7 @@ export default function Footer({footer}) {
           <div uk-grid="" className="uk-grid-match">
             <div className="uk-width-1-1 uk-width-1-2@s uk-width-1-4@m">
               <div className="nov-card nov-card-border">
-                <h4 className="uk-text-uppercase">Subscribe to our newsletter</h4>
+                <h4 className="uk-text-uppercase">{subscribeHeader}</h4>
                 <p>Get news and updates about our latest products and offerings</p>
                 <form action={`https://${process.env.MAILCHIMP_DOMAIN}.${process.env.MAILCHIMP_ZONE}.list-manage.com/subscribe/post-json?u=${process.env.MAILCHIMP_USER_ID}&amp;id=${process.env.MAILCHIMP_SUBSCRIBE_LIST}`} method="get" id="mailchimp-subscribe" className="uk-form" >
                   <div>
@@ -31,7 +30,7 @@ export default function Footer({footer}) {
             </div>
             <div className="uk-width-1-1 uk-width-1-2@s uk-width-1-4@m">
               <div className="nov-card nov-card-border">
-                <h4 className="uk-text-uppercase">Connect</h4>
+                <h4 className="uk-text-uppercase">{connectHeader}</h4>
                 
                   <ul className="uk-list uk-margin-remove">
                     {
@@ -48,7 +47,7 @@ export default function Footer({footer}) {
             </div>
             <div className="uk-width-1-1 uk-width-1-2@s uk-width-1-4@m">
               <div className="nov-card nov-card-border">
-                <h4 className="uk-text-uppercase">Social</h4>
+                <h4 className="uk-text-uppercase">{socialHeader}</h4>
                 <div>
                   {
                     socialLinks.map((link) => 
@@ -60,7 +59,7 @@ export default function Footer({footer}) {
             </div>
             <div className="uk-width-1-1 uk-width-1-2@s uk-width-1-4@m">
               <div className="nov-card nov-card-border">
-                <h4 className="uk-text-uppercase">Partners</h4>
+                <h4 className="uk-text-uppercase">{partnerHeader}</h4>
                 <div>
                   {
                     partners?.map(partner => 

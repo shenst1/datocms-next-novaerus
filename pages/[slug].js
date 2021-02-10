@@ -4,7 +4,7 @@ import Container from "../components/container";
 import Header from "../components/header";
 import Layout from "../components/layout";
 import { request } from "../lib/datocms";
-import { pageFragment, responsiveImageFragment} from "../lib/fragments";
+import { pageFragment, responsiveImageFragment, footerFragment} from "../lib/fragments";
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allPages { slug } }` });
@@ -22,6 +22,9 @@ export async function getStaticProps({ params, preview = false }) {
         settings: setting {
           companyLogo {
             url
+          }
+          footer {
+            ...footerFragment
           }
           mainNavigation {
             label
@@ -45,6 +48,7 @@ export async function getStaticProps({ params, preview = false }) {
         }
       }
       ${pageFragment}
+      ${footerFragment}
     `,
     preview,
     variables: {
