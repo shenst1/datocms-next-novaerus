@@ -46,9 +46,11 @@ export default function Layout({ preview, children, settings }) {
               <ul className="uk-navbar-nav">
                 {
                   settings.mainNavigation.children.map((node, i) =>  
-                    <li><Link key={node.link?.id || i} as={`/${node?.link?.slug}`} href="/[slug]">
-                      <a className="nav_menu_link">{node.label}</a>
-                    </Link></li>
+                    <li key={node.link?.id || i}>
+                      <Link as={`/${node?.link?.slug}`} href="/[slug]">
+                        <a className="nav_menu_link">{node.label}</a>
+                      </Link>
+                    </li>
                   )
                 }
               </ul>
@@ -127,7 +129,7 @@ export default function Layout({ preview, children, settings }) {
             </ul>
           </div>
         </nav>
-        <Footer />
+        <Footer footer={settings.footer} />
       </div>
     </>
   )

@@ -1,6 +1,6 @@
 @import './helpers/colors.scss';
 @import './helpers/mixins.scss';
-@import "uikit/src/scss/variables-theme.scss";
+// variables list https://github.com/uikit/uikit/blob/develop/src/scss/variables.scss
 
 
 $global-link-color: $c-brand-blue;
@@ -89,7 +89,9 @@ $width-xlarge-width: 520px;
 $table-divider-border-width: 2px;
 $table-divider-border: $c-metal;
 $global-font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-@import "uikit/src/scss/uikit.scss";
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+@import "uikit/src/scss/uikit-theme.scss";
 @import "./components/background.scss";
 @import "./components/base.scss";
 @import "./components/blockquote.scss";

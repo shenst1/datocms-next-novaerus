@@ -4,7 +4,7 @@ import Container from "../components/container";
 import Header from "../components/header";
 import Layout from "../components/layout";
 import { request } from "../lib/datocms";
-import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
+import { pageFragment, responsiveImageFragment} from "../lib/fragments";
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allPages { slug } }` });
@@ -41,14 +41,10 @@ export async function getStaticProps({ params, preview = false }) {
           }
         }
         page(filter: {slug: {eq: $slug}}) {
-          title
-          slug
-          seo: _seoMetaTags {
-            ...metaTagsFragment
-          }
+          ...pageFragment
         }
       }
-      ${metaTagsFragment}
+      ${pageFragment}
     `,
     preview,
     variables: {
