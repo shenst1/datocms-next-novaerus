@@ -1,0 +1,1 @@
+// export default function BackgroundImage({classNames, responsiveImage,})

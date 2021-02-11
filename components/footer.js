@@ -18,10 +18,10 @@ export default function Footer({footer}) {
                     <input type="email" name="EMAIL" className="uk-input uk-margin-small-bottom" id="mce-EMAIL" placeholder="Your Email" required />
                       {/* <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--> */}
                     <div style={{position: "absolute", left: "-5000px" }} aria-hidden="true">
-                      <input type="text" name={`b_${process.env.MAILCHIMP_USER_ID}_${process.env.MAILCHIMP_SUBSCRIBE_LIST}`} tabindex="-1" value="" />  
+                      <input type="text" name={`b_${process.env.MAILCHIMP_USER_ID}_${process.env.MAILCHIMP_SUBSCRIBE_LIST}`} tabindex="-1"  />  
                     </div>
                     <div>
-                      <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="uk-button uk-button-secondary" />
+                      <input type="submit"  name="subscribe" id="mc-embedded-subscribe" className="uk-button uk-button-secondary" />
                     </div>
                   </div>
                   <div id="response" className="uk-margin-small-top"></div>

@@ -1,15 +1,16 @@
 import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
-import Layout from "../components/layout";
-import Widgets from "../components/widgets";
-import { request } from "../lib/datocms";
-import { pageFragment, responsiveImageFragment, footerFragment} from "../lib/fragments";
+import Container from "../../components/container";
+import Layout from "../../components/layout";
+import ApplicationShow from "../../components/application-show";
+import { request } from "../../lib/datocms";
+import {  responsiveImageFragment, footerFragment, metaTagsFragment} from "../../lib/fragments";
 
 export async function getStaticPaths() {
-  const data = await request({ query: `{ allPages { slug } }` });
+  const data = await request({ query: `{ allApplications { slug } }` });
 
   return {
-    paths: data.allPages.map((page) => `/${page.slug}`),
+    paths: data.allApplications.map((app) => `/applications/${app.slug}`),
     fallback: false,
   };
 }
@@ -17,7 +18,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params, preview = false }) {
   const graphqlRequest = {
     query: `
-      query PageBySlug($slug: String) {
+      query ApplicationBySlug($slug: String) {
         settings: setting {
           companyLogo {
             url
@@ -42,11 +43,33 @@ export async function getStaticProps({ params, preview = false }) {
             }
           }
         }
-        page(filter: {slug: {eq: $slug}}) {
-          ...pageFragment
+        application(filter: {slug: {eq: $slug}}) {
+          backgroundImage {
+            responsiveImage(imgixParams: { w: 2560  }) {
+              ...responsiveImageFragment
+            }
+          }
+          title
+          seo: _seoMetaTags {
+            ...metaTagsFragment
+          }
+          header
+          leadText
+          solutionsHeader
+          solutionsBody
+          iconFacts {
+            fact
+          }
+          solutionsCta {
+            label
+            link {
+              slug
+            }
+          }
         }
       }
-      ${pageFragment}
+      ${responsiveImageFragment}
+      ${metaTagsFragment}
       ${footerFragment}
     `,
     preview,
@@ -71,17 +94,19 @@ export async function getStaticProps({ params, preview = false }) {
   };
 }
 
-export default function Page({ subscription, preview }) {
+export default function Application({ subscription, preview }) {
   const {
-    data: { settings, page },
+    data: { settings, application },
   } = useQuerySubscription(subscription);
 
-  const metaTags = page.seo
+  const metaTags = application.seo
 
   return (
     <Layout settings={settings} preview={preview}>
       <Head>{renderMetaTags(metaTags)}</Head>
-      <Widgets widgets={page.widgets} />
+      <Container>
+        <ApplicationShow application={application} />
+      </Container>
     </Layout>
   );
 }
