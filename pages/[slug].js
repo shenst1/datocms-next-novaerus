@@ -79,7 +79,7 @@ export default function Page({ subscription, preview }) {
   const metaTags = page.seo
 
   return (
-    <Layout settings={settings} preview={preview}>
+    <Layout settings={settings} preview={preview} transparentNavigation={page.transparentNavigation}>
       <Head>{renderMetaTags(metaTags)}</Head>
       <Widgets widgets={page.widgets} />
     </Layout>

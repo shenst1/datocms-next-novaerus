@@ -1,7 +1,5 @@
 import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
-
-
 import Layout from "../components/layout";
 import Widgets from "../components/widgets";
 import { request } from "../lib/datocms";
@@ -60,7 +58,6 @@ export async function getStaticProps({ preview }) {
     },
   };
 }
-
 
 export default function Index({ subscription }) {
   const {
