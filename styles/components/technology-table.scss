@@ -1,0 +1,45 @@
+// These styles were hacked in adhoc at some point
+.research-table-body img {
+  max-width: 70px;
+}
+.research-table-body tr td:first-of-type {
+  vertical-align: middle;
+  padding-right: 0;
+}
+.section-name {
+  font-size: 20px;
+  font-weight: 400;
+  min-width: 40%;
+  max-width: 40%;
+  margin-right: 80px;
+  margin-bottom: 0;
+  line-height: 20px;
+}
+.flex-wrap-large-up {
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 701px) {
+  .section-name {
+    width: 100%;
+  }
+  .chart-p-text {
+    width: 57%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .flex-wrap-large-up {
+    flex-wrap: wrap;
+
+  }
+  .chart-p-text {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .section-name {
+    min-width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+}

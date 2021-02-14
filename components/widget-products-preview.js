@@ -21,7 +21,7 @@ export default function WidgetProductsPreview({widget: {title,thumbnail, body, p
               <Link key={product.id} as={`/${cardLink?.link?.slug}`} href="/[slug]">
                 <a class="uk-link-reset"> 
                   <div key={product.id}>
-                    <div className="uk-card uk-card-default uk-card-hover uk-card-body uk-flex uk-flex-column">
+                    <div className="uk-height-1-1 uk-card uk-card-default uk-card-hover uk-card-body uk-flex uk-flex-column">
                       <div className="uk-flex-none">
                         <figure className="uk-text-center">
                           <Image

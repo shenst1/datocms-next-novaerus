@@ -7,12 +7,24 @@ import WidgetApplicationGrid from "./widget-application-grid";
 import WidgetProductDetails from "./widget-product-details";
 import WidgetTwoColumnVideoCta from "./widget-two-column-video-cta";
 import WidgetHero from "./widget-hero";
+import WidgetVideoTabs from "./widget-video-tabs";
+import WidgetFactsStats from "./widget-facts-stats";
+import WidgetSection from "./widget-section";
 
 export default function Widgets({widgets}) {
   function renderWidget(widget) {
     switch (widget.__typename) {
+      case "WidgetSectionRecord":
+        return <WidgetSection widget={widget} />
+        break;
+      case "WidgetFactsStatsSectionRecord":
+        return <WidgetFactsStats widget={widget} />
+        break;
       case "WidgetHeroRecord":
         return <WidgetHero widget={widget} />
+        break;
+      case "WidgetVideoTabsSectionRecord":
+        return <WidgetVideoTabs widget={widget} />
         break;
       case "WidgetTwoColumnVideoCtaRecord":
         return <WidgetTwoColumnVideoCta widget={widget} />
