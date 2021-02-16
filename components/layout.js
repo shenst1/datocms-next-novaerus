@@ -23,7 +23,7 @@ export default function Layout({ preview, children, settings, transparentNavigat
       <Head>
           <link rel="stylesheet" href="//s3.amazonaws.com/icomoon.io/29147/NOV-Novaerus/style.css?jdh7bk" />
       </Head>
-      <div class="uk-offcanvas-content" uk-scrollspy="target: .uk-card, img:not(.nov-scrollspy-ignore); cls:uk-animation-fade; delay: 100">
+      <div class="uk-offcanvas-content" uk-scrollspy="target: img:not(.nov-scrollspy-ignore); cls:uk-animation-fade; delay: 100">
         <div className={`uk-navbar-container ${transparentNavigation && 'uk-sticky-remove-placeholder' }`} uk-sticky="">
           <nav className="uk-container" uk-navbar="mode: click;">
             <div className="uk-navbar-left">
