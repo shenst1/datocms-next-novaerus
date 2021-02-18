@@ -21,7 +21,7 @@ export default function WidgetProductDetails({widget}) {
                   <figcaption uk-lightbox="" className="uk-margin-small-top">
                     <a className="nov-button-icon-link uk-flex uk-flex-inline uk-flex-middle nov-text-semibold" href={product.videoUrl}>
                       <span>Watch it in Action</span>
-                      <i class="icomoon-play-circle" />
+                      <i className="icomoon-play-circle" />
                     </a>
                   </figcaption>
                 }
@@ -45,9 +45,9 @@ export default function WidgetProductDetails({widget}) {
                     }
                     </div>
                   </div>
-                  <div class="uk-width-1-1 uk-width-2-5@m">
+                  <div className="uk-width-1-1 uk-width-2-5@m">
                     <h6>Applications</h6>
-                    <div class="nov-list" dangerouslySetInnerHTML={{__html: product.applications}} />
+                    <div className="nov-list" dangerouslySetInnerHTML={{__html: product.applications}} />
                     {
                       product.technicalSheet &&
                       <>

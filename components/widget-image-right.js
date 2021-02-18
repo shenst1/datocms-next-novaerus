@@ -4,11 +4,11 @@ import { Image } from 'react-datocms'
 export default function WidgetImageRight({widget: {title, body, button, leadImage, image}}) {
 
   return (
-    <div class="uk-section-small">
-      <div class="uk-container">
+    <div className="uk-section-small">
+      <div className="uk-container">
         
         <div uk-grid="">
-          <div class="uk-width-1-1 uk-width-1-3@s">
+          <div className="uk-width-1-1 uk-width-1-3@s">
             <Image
                 data={{
                   ...leadImage.responsiveImage,
@@ -16,7 +16,7 @@ export default function WidgetImageRight({widget: {title, body, button, leadImag
                 }}
                 
               />
-            <div class="uk-margin-large-top">
+            <div className="uk-margin-large-top">
               <h2>{title}</h2>
             </div>
             
@@ -24,7 +24,7 @@ export default function WidgetImageRight({widget: {title, body, button, leadImag
             </div>
             
           </div>
-          <div class="uk-width-1-1 uk-width-2-3@s">
+          <div className="uk-width-1-1 uk-width-2-3@s">
             <Image
                 data={{
                   ...image.responsiveImage,

@@ -19,7 +19,7 @@ export default function WidgetProductsPreview({widget: {title,thumbnail, body, p
           {
             products.map(product => 
               <Link key={product.id} as={`/${cardLink?.link?.slug}`} href="/[slug]">
-                <a class="uk-link-reset"> 
+                <a className="uk-link-reset"> 
                   <div key={product.id}>
                     <div className="uk-height-1-1 uk-card uk-card-default uk-card-hover uk-card-body uk-flex uk-flex-column">
                       <div className="uk-flex-none">
