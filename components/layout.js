@@ -23,7 +23,7 @@ export default function Layout({ preview, children, settings, transparentNavigat
       <Head>
           <link rel="stylesheet" href="//s3.amazonaws.com/icomoon.io/29147/NOV-Novaerus/style.css?jdh7bk" />
       </Head>
-      <div class="uk-offcanvas-content" uk-scrollspy="target: img:not(.nov-scrollspy-ignore); cls:uk-animation-fade; delay: 100">
+      <div className="uk-offcanvas-content" uk-scrollspy="target: img:not(.nov-scrollspy-ignore); cls:uk-animation-fade; delay: 100">
         <div className={`uk-navbar-container ${transparentNavigation && 'uk-sticky-remove-placeholder' }`} uk-sticky="">
           <nav className="uk-container" uk-navbar="mode: click;">
             <div className="uk-navbar-left">
@@ -57,9 +57,9 @@ export default function Layout({ preview, children, settings, transparentNavigat
             </div>
             <div className="uk-navbar-right">
               <ul className="uk-navbar-nav">
-                <li class="nav_hamburger">
+                <li className="nav_hamburger">
                   <a href="#mobile-navigation" uk-toggle="">
-                    <i class="icomoon-menu"></i>
+                    <i className="icomoon-menu"></i>
                     </a>
                 </li>
               </ul>
@@ -71,10 +71,10 @@ export default function Layout({ preview, children, settings, transparentNavigat
           {children}
         </main>
         <nav id="mobile-navigation" uk-offcanvas="mode: push; overlay: true; flip: true;">
-          <div class="uk-offcanvas-bar uk-padding-remove">
-            <div class="uk-container">
-              <div class="uk-navbar-center">
-                <ul class="uk-navbar-nav">
+          <div className="uk-offcanvas-bar uk-padding-remove">
+            <div className="uk-container">
+              <div className="uk-navbar-center">
+                <ul className="uk-navbar-nav">
                   <li>
                     <Link  as={`/`} href="/">
                       <a className="uk-logo">
@@ -90,11 +90,11 @@ export default function Layout({ preview, children, settings, transparentNavigat
                 </ul>
               </div>
             </div>
-            <ul class="uk-nav-primary" uk-nav>
+            <ul className="uk-nav-primary" uk-nav>
               {
                 settings.mainNavigation.children.map((node, i) =>  
                   <>
-                    <li class="uk-nav-divider"></li>
+                    <li className="uk-nav-divider"></li>
                     <li>
                       <Link key={node.link?.id || i} as={`/${node?.link?.slug}`} href="/[slug]">
                       <a>{node.label}</a>
@@ -104,20 +104,20 @@ export default function Layout({ preview, children, settings, transparentNavigat
               }
             </ul>
         
-            <ul class="uk-nav-default" uk-nav="">
-              <li class="uk-nav-divider"></li>
+            <ul className="uk-nav-default" uk-nav="">
+              <li className="uk-nav-divider"></li>
               <li>
               
-                  <i class="icomoon-message-square"></i> Contact
+                  <i className="icomoon-message-square"></i> Contact
               
               </li>
-              <li class="uk-nav-divider"></li>
+              <li className="uk-nav-divider"></li>
               <li>
               
-                  <i class="icomoon-lock"></i> Partner login
+                  <i className="icomoon-lock"></i> Partner login
               
               </li>
-              <li class="uk-nav-divider"></li>
+              <li className="uk-nav-divider"></li>
             </ul>
           </div>
         </nav>
