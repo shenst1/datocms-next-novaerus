@@ -8,10 +8,9 @@ import {  responsiveImageFragment, footerFragment } from "../../lib/fragments";
 
 export async function getStaticPaths() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_CMSIFY_HOST}/api/research_articles.json`)
-  const researchArticles = await res.json()
-
+  const {researchArticles} = await res.json()
   return {
-    paths: researchArticles.map((article) => `/research/${article.id}`),
+    paths: researchArticles.map(article => `/research/${article.id}`),
     fallback: false,
   };
 }
