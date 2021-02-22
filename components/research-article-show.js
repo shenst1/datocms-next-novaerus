@@ -6,7 +6,7 @@ export default function ResearchArticleShow({researchArticle: {downloadUrl, name
         <div className="uk-container uk-container-small">
           <div uk-grid="" className="uk-margin-medium-top uk-margin-medium-bottom" >
             <div className="uk-width-1-1">
-              <Link as={`/research`} href="/[slug]">
+              <Link as={`/research`} href="/research">
                 <a className="nov-button-icon-link uk-flex uk-flex-inline uk-flex-middle nov-text-semibold">
                   <i className="icomoon-arrow-left-circle uk-margin-remove-left" />
                   <span>Research</span>

@@ -3,7 +3,7 @@ import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import Layout from "../components/layout";
 import Widgets from "../components/widgets";
 import { request } from "../lib/datocms";
-import { metaTagsFragment, responsiveImageFragment, pageFragment, footerFragment } from "../lib/fragments";
+import {  pageFragment, footerFragment } from "../lib/fragments";
 
 export async function getStaticProps({ preview }) {
   const graphqlRequest = {
