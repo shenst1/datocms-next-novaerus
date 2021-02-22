@@ -2,7 +2,7 @@ import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import Layout from "../components/layout";
 import { request } from "../lib/datocms";
-import {  pageFragment, footerFragment, responsiveImageFragment } from "../lib/fragments";
+import {  layoutFragment, responsiveImageFragment } from "../lib/fragments";
 import WidgetHeroCTA from "../components/widget-hero-cta";
 import ResearchFilters from "../components/research-filters"
 export async function getStaticProps({ preview }) {
@@ -40,39 +40,12 @@ export async function getStaticProps({ preview }) {
             }
           }
           testResultsBody
-          researchCollections {
-            collectionLabel
-            collectionId
-          }
-
         }
         settings: setting {
-          companyLogo {
-            url
-          }
-          footer {
-            ...footerFragment
-          }
-          mainNavigation {
-            label
-            externalLink
-            link {
-              slug
-              id
-            }
-            children {
-              label
-              externalLink
-              link {
-                slug
-                id
-              }
-            }
-          }
+          ...layoutFragment
         }
       }
-      ${footerFragment}
-      ${responsiveImageFragment}
+      ${layoutFragment}
     `,
     preview,
   };

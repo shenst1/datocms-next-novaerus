@@ -33,13 +33,13 @@ export default function WidgetResearch({metaInfo, researchLinkCollection, resear
     const items =  collection.items.filter((item) => {
       if (filterValue === "") {
         return item
-      } else if (item.url.includes(filterValue)) {
+      } else if (item.url && item.url.includes(filterValue)) {
         return item
       }
     }).filter((item) => {
       if(searchValue == "")
           return item
-      else if(item.name.toLowerCase().includes(searchValue) || item.excerpt.toLowerCase().includes(searchValue)) {
+      else if(item.name && item.name.toLowerCase().includes(searchValue) || item.excerpt && item.excerpt.toLowerCase().includes(searchValue)) {
           return item
       }
     }).map((item) => <ArticleCard article={item} /> );

@@ -4,7 +4,7 @@ import Container from "../../components/container";
 import Layout from "../../components/layout";
 import ApplicationShow from "../../components/application-show";
 import { request } from "../../lib/datocms";
-import {  responsiveImageFragment, footerFragment, metaTagsFragment} from "../../lib/fragments";
+import { layoutFragment, metaTagsFragment } from "../../lib/fragments";
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allApplications { slug } }` });
@@ -20,28 +20,7 @@ export async function getStaticProps({ params, preview = false }) {
     query: `
       query ApplicationBySlug($slug: String) {
         settings: setting {
-          companyLogo {
-            url
-          }
-          footer {
-            ...footerFragment
-          }
-          mainNavigation {
-            label
-            externalLink
-            link {
-              slug
-              id
-            }
-            children {
-              label
-              externalLink
-              link {
-                slug
-                id
-              }
-            }
-          }
+          ...layoutFragment
         }
         application(filter: {slug: {eq: $slug}}) {
           backgroundImage {
@@ -68,9 +47,8 @@ export async function getStaticProps({ params, preview = false }) {
           }
         }
       }
-      ${responsiveImageFragment}
       ${metaTagsFragment}
-      ${footerFragment}
+      ${layoutFragment}
     `,
     preview,
     variables: {

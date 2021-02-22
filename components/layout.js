@@ -18,6 +18,30 @@ export default function Layout({ preview, children, settings, transparentNavigat
     }
   }, [])
 
+  function NavigationNode({node, children, ...rest}) {
+    if (node.link) {
+      return (
+        <Link as={`/${node.link.slug}`} href="/[slug]">
+          <a {...rest}>{node.label}</a>
+        </Link>
+      )
+    } else if (node.externalLink) {
+      return (
+        <a href={node.externalLink} target="_blank"{...rest} >{node.label}</a>
+      )
+    } else if (node.internalLink) {
+      return (
+        <Link as={`/${node.internalLink}`} href={`/${node.internalLink}`}>
+          <a {...rest}>{node.label}</a>
+        </Link>
+      )
+    } else {
+      return (
+        <a {...rest}>{node.label}</a>
+      )
+    }
+   
+  }
   return (
     <>
       <Head>
@@ -45,11 +69,9 @@ export default function Layout({ preview, children, settings, transparentNavigat
             <div className="uk-navbar-center uk-visible@m">
               <ul className="uk-navbar-nav">
                 {
-                  settings.mainNavigation.children.map((node, i) =>  
-                    <li key={node.link?.id || i}>
-                      <Link as={`/${node?.link?.slug}`} href="/[slug]">
-                        <a className="nav_menu_link">{node.label}</a>
-                      </Link>
+                  settings.mainNavigation.children.map((node) =>  
+                    <li key={node.id}>
+                      <NavigationNode node={node} className="nav_menu_link" />
                     </li>
                   )
                 }
@@ -90,15 +112,15 @@ export default function Layout({ preview, children, settings, transparentNavigat
                 </ul>
               </div>
             </div>
-            <ul className="uk-nav-primary" uk-nav>
+            <ul className="uk-nav-primary" uk-nav="">
               {
                 settings.mainNavigation.children.map((node, i) =>  
                   <>
                     <li className="uk-nav-divider"></li>
                     <li>
-                      <Link key={node.link?.id || i} as={`/${node?.link?.slug}`} href="/[slug]">
-                      <a>{node.label}</a>
-                      </Link></li>
+                      <NavigationNode node={node} />
+                    </li>
+
                   </>
                 )
               }

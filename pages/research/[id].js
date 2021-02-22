@@ -4,7 +4,7 @@ import Container from "../../components/container";
 import Layout from "../../components/layout";
 import ResearchArticleShow from "../../components/research-article-show"
 import { request } from "../../lib/datocms";
-import {  responsiveImageFragment, footerFragment } from "../../lib/fragments";
+import { layoutFragment } from "../../lib/fragments";
 
 export async function getStaticPaths() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_CMSIFY_HOST}/api/research_articles.json`)
@@ -22,32 +22,10 @@ export async function getStaticProps({ params, preview = false }) {
     query: `
       query Settings {
         settings: setting {
-          companyLogo {
-            url
-          }
-          footer {
-            ...footerFragment
-          }
-          mainNavigation {
-            label
-            externalLink
-            link {
-              slug
-              id
-            }
-            children {
-              label
-              externalLink
-              link {
-                slug
-                id
-              }
-            }
-          }
+          ...layoutFragment
         }
       }
-      ${responsiveImageFragment}
-      ${footerFragment}
+      ${layoutFragment}
     `,
     preview
   };

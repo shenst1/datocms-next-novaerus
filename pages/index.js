@@ -3,41 +3,20 @@ import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import Layout from "../components/layout";
 import Widgets from "../components/widgets";
 import { request } from "../lib/datocms";
-import {  pageFragment, footerFragment } from "../lib/fragments";
+import {  pageFragment, layoutFragment } from "../lib/fragments";
 
 export async function getStaticProps({ preview }) {
   const graphqlRequest = {
     query: `
       {
         settings: setting {
-          companyLogo {
-            url
-          }
-          footer {
-            ...footerFragment
-          }
           homePage {
             ...pageFragment
           }
-          mainNavigation {
-            label
-            externalLink
-            link {
-              slug
-              id
-            }
-            children {
-              label
-              externalLink
-              link {
-                slug
-                id
-              }
-            }
-          }
+          ...layoutFragment
         }
       }
-      ${footerFragment}
+      ${layoutFragment}
       ${pageFragment}
     `,
     preview,
