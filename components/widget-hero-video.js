@@ -24,10 +24,10 @@ export default function WidgetHeroVideo({widget: {button, slides, videoUrl}}) {
   }
 
   return (
-    <div class="uk-cover-container uk-text-center uk-visible@s" uk-height-viewport="offset-bottom: 10">
+    <div className="uk-cover-container uk-text-center uk-visible@s" uk-height-viewport="offset-bottom: 10">
       <video onEnded={handleVideoEnded} onTimeUpdate={handleTimeUpdate} src={videoUrl} uk-cover="" />
-      <div class="uk-position-cover uk-overlay-tertiary">
-        <div class="uk-position-center uk-light">
+      <div className="uk-position-cover uk-overlay-tertiary">
+        <div className="uk-position-center uk-light">
           
             {
               slides.map((slide, i) => 
@@ -37,7 +37,7 @@ export default function WidgetHeroVideo({widget: {button, slides, videoUrl}}) {
           
         </div>
       </div>
-      <div class="uk-position-bottom-center uk-position-large">
+      <div className="uk-position-bottom-center uk-position-large">
         <NavigationNode className="uk-button uk-button-primary" node={button} />
       </div>
     </div>

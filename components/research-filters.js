@@ -53,18 +53,18 @@ export default function WidgetResearch({metaInfo, researchLinkCollection, resear
   }
 
   return (
-    <div class="uk-section">
-      <div class="uk-container">
-        <div class="uk-margin-auto uk-width-large uk-margin-medium-bottom">
-          <ul class="uk-flex-center uk-subnav uk-subnav-pill uk-margin-remove-bottom" uk-switcher="connect: #filters">
-            <li class="uk-active"><a href="#">Search</a></li>
+    <div className="uk-section">
+      <div className="uk-container">
+        <div className="uk-margin-auto uk-width-large uk-margin-medium-bottom">
+          <ul className="uk-flex-center uk-subnav uk-subnav-pill uk-margin-remove-bottom" uk-switcher="connect: #filters">
+            <li className="uk-active"><a href="#">Search</a></li>
             <li><a href="#">Filter</a></li>
           </ul>
-          <div class="uk-padding-small uk-background-muted">
-            <ul class="uk-switcher" id="filters">
-              <li class="uk-active">
+          <div className="uk-padding-small uk-background-muted">
+            <ul className="uk-switcher" id="filters">
+              <li className="uk-active">
                 <form className="uk-search uk-search-default uk-width-1-1">
-                  <a href="" class="uk-search-icon-flip" uk-search-icon=""></a>
+                  <a href="" className="uk-search-icon-flip" uk-search-icon=""></a>
                   <input placeholder="Search articles" onChange={handleSearchChange} onFocus={handleSearchFocus} className="uk-input" />
                 </form>
               </li>
@@ -74,8 +74,8 @@ export default function WidgetResearch({metaInfo, researchLinkCollection, resear
             </ul>
           </div>
         </div>
-        <div class="uk-margin-auto uk-width-xxlarge uk-margin-medium-bottom">
-          <ul class="uk-flex-center uk-tab" uk-tab="connect: #articles">
+        <div className="uk-margin-auto uk-width-xxlarge uk-margin-medium-bottom">
+          <ul className="uk-flex-center uk-tab" uk-tab="connect: #articles">
             <li data-index={0} className={0 === activeTabIndex && "uk-active"}><a onClick={() => setActiveTabIndex(0)}>{`Test Results`}</a></li>
             {
               ["Lab studies", "Clinical trials", "Case studies"].map((tabLink, i) =>
@@ -85,29 +85,29 @@ export default function WidgetResearch({metaInfo, researchLinkCollection, resear
           </ul>
         </div>
 
-        <ul class="uk-switcher" id="articles">
+        <ul className="uk-switcher" id="articles">
           <li className={0 === activeTabIndex && "uk-active"}>
             <div className="uk-container uk-container-small uk-text-center uk-margin-medium-bottom" dangerouslySetInnerHTML={{__html: testResultsBody}} />
             {
               researchLinkCollection.children.map(collection =>
-                <div class="table-link-container">
-                  <div class="outer-image-section">
-                      <div class="image-section">
+                <div className="table-link-container">
+                  <div className="outer-image-section">
+                      <div className="image-section">
                         {collection.featured_image && <img src={collection.featured_image} width="60" alt=""/>}
                       </div>
                     <div>
-                      <h3 class="section-name">
+                      <h3 className="section-name">
                         {collection.name}
                       </h3>
                     </div>
                   </div>
                   <div>
-                    <table class="uk-table uk-table-divider research-table-body">
+                    <table className="uk-table uk-table-divider research-table-body">
                     <tr>
                       <th>Name</th>
-                      <th>Reduc<span class="hide-mid">tion</span><span class="show-mid">.</span></th>
-                      <th class="hide-mobile">Time</th>
-                      <th class="hide-mobile">Space</th>
+                      <th>Reduc<span className="hide-mid">tion</span><span className="show-mid">.</span></th>
+                      <th className="hide-mobile">Time</th>
+                      <th className="hide-mobile">Space</th>
                       <th>Model</th>
                     </tr>
                     {
@@ -115,16 +115,16 @@ export default function WidgetResearch({metaInfo, researchLinkCollection, resear
                         <tr>
                           <td>
                             <Link as={item.excerpt} href="/research/[:id]">
-                              <a class="link-style" dangerouslySetInnerHTML={{__html: item.name}} />
+                              <a className="link-style" dangerouslySetInnerHTML={{__html: item.name}} />
                             </Link>
                           </td>
                           <td>
                             {item.author}
                           </td>
-                          <td class="hide-mobile">
+                          <td className="hide-mobile">
                             {item.url}
                           </td>
-                          <td class="hide-mobile" dangerouslySetInnerHTML={{__html: item.citation}} />
+                          <td className="hide-mobile" dangerouslySetInnerHTML={{__html: item.citation}} />
                           <td>
                             {item.aside}
                           </td>
