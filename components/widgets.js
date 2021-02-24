@@ -11,10 +11,14 @@ import WidgetVideoTabs from "./widget-video-tabs";
 import WidgetFactsStats from "./widget-facts-stats";
 import WidgetSection from "./widget-section";
 import WidgetFindRepresentative from "./widget-find-representative";
+import WidgetHeroVideo from "./widget-hero-video";
 
 export default function Widgets({widgets}) {
   function renderWidget(widget) {
     switch (widget.__typename) {
+      case "WidgetHeroVideoRecord":
+        return <WidgetHeroVideo widget={widget} />
+        break;
       case "WidgetFindARepresentativeRecord":
         return <WidgetFindRepresentative widget={widget} />
         break;
