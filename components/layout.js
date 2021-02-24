@@ -1,15 +1,15 @@
-import Alert from '../components/alert'
-import Footer from '../components/footer'
 import Link from 'next/link'
-import {useState, useEffect} from 'react'
 import { useRouter } from 'next/router'
 import Head from "next/head"
+import {useEffect} from "react"
 import UIkit from "uikit"
+import Alert from "../components/alert"
+import Footer from "../components/footer"
+import NavigationNode from "../components/navigation-node"
 export default function Layout({ preview, children, settings, transparentNavigation = true }) {
   const router = useRouter()
-  const [openMenu, setOpenMenu] = useState(false)
   useEffect(() => {
-    const handleRouteChange = (url, { shallow }) => {
+    const handleRouteChange = () => {
       UIkit.offcanvas('#mobile-navigation').hide()
     }
     router.events.on('routeChangeStart', handleRouteChange)
@@ -18,30 +18,7 @@ export default function Layout({ preview, children, settings, transparentNavigat
     }
   }, [])
 
-  function NavigationNode({node, children, ...rest}) {
-    if (node.link) {
-      return (
-        <Link as={`/${node.link.slug}`} href="/[slug]">
-          <a {...rest}>{node.label}</a>
-        </Link>
-      )
-    } else if (node.externalLink) {
-      return (
-        <a href={node.externalLink} target="_blank"{...rest} >{node.label}</a>
-      )
-    } else if (node.internalLink) {
-      return (
-        <Link as={`/${node.internalLink}`} href={`/${node.internalLink}`}>
-          <a {...rest}>{node.label}</a>
-        </Link>
-      )
-    } else {
-      return (
-        <a {...rest}>{node.label}</a>
-      )
-    }
-   
-  }
+ 
   return (
     <>
       <Head>
