@@ -89,6 +89,9 @@ $width-xlarge-width: 520px;
 $table-divider-border-width: 2px;
 $table-divider-border: $c-metal;
 $global-font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+$alert-primary-background: $c-crisp-blue;
+$alert-primary-color: $c-brand-blue;
 @import "uikit/src/scss/variables-theme.scss";
 @import "uikit/src/scss/mixins-theme.scss";
 @import "uikit/src/scss/uikit-theme.scss";

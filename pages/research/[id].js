@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
-import Container from "../../components/container";
 import Layout from "../../components/layout";
 import ResearchArticleShow from "../../components/research-article-show"
 import { request } from "../../lib/datocms";
@@ -54,9 +53,7 @@ export default function Application({ subscription, preview, researchArticle }) 
 
   return (
     <Layout settings={settings} preview={preview}  transparentNavigation={false}>
-      <Container>
-        <ResearchArticleShow researchArticle={researchArticle} />
-      </Container>
+      <ResearchArticleShow researchArticle={researchArticle} />
     </Layout>
   );
 }

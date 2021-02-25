@@ -1,19 +1,13 @@
 import NavigationNode from '../components/navigation-node'
-import { useState, useEffect } from 'react'
-
+import { useState } from 'react'
 
 export default function WidgetHeroVideo({widget: {button, slides, videoUrl}}) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const slidesLength = slides.length
   const isLastSlide = currentSlide + 1 === slidesLength
 
-  useEffect(() => {
-    console.log("current slide", currentSlide)
-    
-  }, [currentSlide])
   function handleTimeUpdate(e) {
     if (!isLastSlide && e.target.currentTime > slides[currentSlide + 1].timing) {
-
       setCurrentSlide(currentSlide + 1)
     }
   }
@@ -28,13 +22,11 @@ export default function WidgetHeroVideo({widget: {button, slides, videoUrl}}) {
       <video onEnded={handleVideoEnded} onTimeUpdate={handleTimeUpdate} src={videoUrl} uk-cover="" />
       <div className="uk-position-cover uk-overlay-tertiary">
         <div className="uk-position-center uk-light">
-          
-            {
-              slides.map((slide, i) => 
-                <h1 key={i} className={`slide-text nov-text-shadow uk-animation-fade ${i !== currentSlide && 'uk-hidden' }` }>{slide.textOnly}</h1>
-              )
-            }
-          
+          {
+            slides.map((slide, i) => 
+              <h1 key={i} className={`slide-text nov-text-shadow uk-animation-fade ${i !== currentSlide && 'uk-hidden' }` }>{slide.textOnly}</h1>
+            )
+          }
         </div>
       </div>
       <div className="uk-position-bottom-center uk-position-large">

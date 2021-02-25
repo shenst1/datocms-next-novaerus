@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
-import Container from "../../components/container";
 import Layout from "../../components/layout";
 import ApplicationShow from "../../components/application-show";
 import { request } from "../../lib/datocms";
@@ -82,9 +81,7 @@ export default function Application({ subscription, preview }) {
   return (
     <Layout settings={settings} preview={preview}>
       <Head>{renderMetaTags(metaTags)}</Head>
-      <Container>
-        <ApplicationShow application={application} />
-      </Container>
+      <ApplicationShow application={application} />
     </Layout>
   );
 }

@@ -1,6 +1,6 @@
 
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-export default function WidgetContactForm({widget: {customerSupportLabel, customerSupportBody, formLabel}}) {
+import { Formik, Field, ErrorMessage } from 'formik';
+export default function WidgetContactForm({widget: {customerSupportLabel, customerSupportBody, formLabel, successMessage, loadingMessage, emailRecipient}}) {
   return (
     <div className="uk-section">
       <div className="uk-container uk-container-small">
@@ -16,13 +16,14 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
               {formLabel && <h4>{formLabel}</h4> }
               <Formik
                 initialValues={{ 
-                  title: null || "ShenCorp",
-                  description: null || "Just sending a test message",
-                  name: null || "Andrew Shenstone",
-                  phone: null || "339-223-0797",
-                  email: null || "shenst1@gmail.com",
-                  referral: 'Local next js contact us',
-                  recipient: 'shenst1@gmail.com' }}
+                  title: null,
+                  description: null,
+                  name: null,
+                  phone: null,
+                  email: null,
+                  referral: 'Main contact page',
+                  recipient: emailRecipient
+                }}
                 validate={values => {
                   console.log("looking at values", values)
                   const errors = {};
@@ -40,18 +41,27 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
                   }
                   return errors;
                 }}
-                onSubmit={(values, { setSubmitting }) => {
-               
-                  setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                  }, 400);
+                onSubmit={async (values, {  resetForm, setStatus }) => {
+                  const response = await fetch(`/api/tickets`, {
+                    method: 'POST', 
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(values)
+                  });
+                  resetForm()
+                  if (response.status === 200) {
+                    setStatus('success')
+                  } else {
+                    setStatus('error')
+                  }
+                 
                 }}
               >
                 {({
                   handleSubmit,
                   isSubmitting,
-                  /* and other goodies */
+                  status
                 }) => (
                   <form onSubmit={handleSubmit}>
                     <div className="uk-margin">
@@ -81,8 +91,23 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
                       <ErrorMessage name="description" component="div" className="uk-text-danger" />
                     </div>
                     <button type="submit" className="btn uk-button uk-button-secondary" disabled={isSubmitting}>
-                      Submit
+                     { isSubmitting ? (<>{loadingMessage}&nbsp;<div uk-spinner="" /></>) : "Submit" }
                     </button>
+                    {
+                      status === "success" && 
+                        <div class="uk-alert-primary" uk-alert="">
+                          <a class="uk-alert-close " uk-close=""></a>
+                          <p>{successMessage}</p>
+                        </div>
+                    }
+                    {
+                      status === "error" && 
+                        <div class="uk-alert-danger" uk-alert="">
+                          <a class="uk-alert-close " uk-close=""></a>
+                          <p>Sorry, something went wrong. You can reach us by calling or emailing directly.</p>
+                        </div>
+                    }
+                    
                   </form>
                 )}
               </Formik>
