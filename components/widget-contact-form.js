@@ -4,7 +4,7 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
   return (
     <div className="uk-section">
       <div className="uk-container uk-container-small">
-        <div uk-grid className="uk-grid-large uk-child-width-1-1">
+        <div uk-grid="" className="uk-grid-large uk-child-width-1-1">
           <div>
             <div className="nov-card nov-card-border">
               {customerSupportLabel && <h4>{customerSupportLabel}</h4> }
@@ -16,16 +16,15 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
               {formLabel && <h4>{formLabel}</h4> }
               <Formik
                 initialValues={{ 
-                  title: null,
-                  description: null,
-                  name: null,
-                  phone: null,
-                  email: null,
+                  title: "",
+                  description: "",
+                  name: "",
+                  phone: "",
+                  email: "",
                   referral: 'Main contact page',
                   recipient: emailRecipient
                 }}
                 validate={values => {
-                  console.log("looking at values", values)
                   const errors = {};
                   if (!values.email) {
                     errors.email = 'Required';
@@ -41,18 +40,18 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
                   }
                   return errors;
                 }}
-                onSubmit={async (values, {  resetForm, setStatus }) => {
-                  const response = await fetch(`/api/tickets`, {
-                    method: 'POST', 
-                    headers: {
-                      'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(values)
-                  });
-                  resetForm()
-                  if (response.status === 200) {
+                onSubmit={async (values, { setStatus, resetForm }) => {
+                  try {
+                    const response = await fetch(`/api/tickets`, {
+                      method: 'POST', 
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify(values)
+                    });
+                    resetForm()
                     setStatus('success')
-                  } else {
+                  } catch(error) {
                     setStatus('error')
                   }
                  
@@ -95,15 +94,15 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
                     </button>
                     {
                       status === "success" && 
-                        <div class="uk-alert-primary" uk-alert="">
-                          <a class="uk-alert-close " uk-close=""></a>
+                        <div className="uk-alert-primary" uk-alert="">
+                          <a className="uk-alert-close " uk-close=""></a>
                           <p>{successMessage}</p>
                         </div>
                     }
                     {
                       status === "error" && 
-                        <div class="uk-alert-danger" uk-alert="">
-                          <a class="uk-alert-close " uk-close=""></a>
+                        <div className="uk-alert-danger" uk-alert="">
+                          <a className="uk-alert-close " uk-close=""></a>
                           <p>Sorry, something went wrong. You can reach us by calling or emailing directly.</p>
                         </div>
                     }
