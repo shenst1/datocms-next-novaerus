@@ -1,4 +1,4 @@
-import Container from './container'
+
 import cn from 'classnames'
 
 export default function Alert({ preview }) {
@@ -9,7 +9,7 @@ export default function Alert({ preview }) {
         'bg-accent-1 border-accent-2': !preview,
       })}
     >
-      <Container>
+  
         <div className="py-2 text-center text-sm">
           {preview ? (
             <>
@@ -35,7 +35,6 @@ export default function Alert({ preview }) {
             </>
           )}
         </div>
-      </Container>
     </div>
   )
 }

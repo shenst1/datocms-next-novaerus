@@ -1,4 +1,3 @@
-import Container from './container'
 import Link from 'next/link'
 import { Image } from 'react-datocms'
 
@@ -99,7 +98,7 @@ export default function Footer({footer}) {
             </div>
           </div>
           <hr style={{borderColor: "949499"}} />
-          <small className="uk-text-muted" dangerouslySetInnerHTML={{ __html: disclaimer}} />  
+          <div className="uk-text-muted uk-text-small" dangerouslySetInnerHTML={{ __html: disclaimer}} />
         </div>
       </footer>
     </>
