@@ -15,10 +15,14 @@ import WidgetHeroVideo from "./widget-hero-video";
 import WidgetContactForm from "./widget-contact-form";
 import WidgetHeroSlideshow from "./widget-hero-slideshow";
 import WidgetTestimonialCarousel from "./widget-testimonial-carousel";
+import WidgetContactLandingForm from "./widget-contact-landing-form";
 
 export default function Widgets({widgets}) {
   function renderWidget(widget) {
     switch (widget.__typename) {
+      case "WidgetContactLandingFormRecord":
+        return <WidgetContactLandingForm widget={widget} />
+        break;
       case "WidgetTestimonialCarouselRecord":
         return <WidgetTestimonialCarousel widget={widget} />
         break;

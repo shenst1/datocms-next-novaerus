@@ -1,19 +1,24 @@
 
 import { Formik, Field, ErrorMessage } from 'formik';
-export default function WidgetContactForm({widget: {customerSupportLabel, customerSupportBody, formLabel, successMessage, loadingMessage, emailRecipient}}) {
+import {Image } from "react-datocms"
+export default function WidgetContactLandingForm({widget: {title, aside, buttonLabel, successMessage, loadingMessage, emailRecipient, showSector, image}}) {
   return (
     <div className="uk-section">
-      <div className="uk-container uk-container-small">
-        <div uk-grid="" className="uk-grid-large uk-child-width-1-1">
+      <div className="uk-container">
+        <div uk-grid="" className="uk-grid-large uk-child-width-1-2@m">
           <div>
-            <div className="nov-card nov-card-border">
-              {customerSupportLabel && <h4>{customerSupportLabel}</h4> }
-              {customerSupportBody && <div dangerouslySetInnerHTML={{__html: customerSupportBody}} />}
-            </div>
+            {title && <h2 className="uk-text-primary">{title}</h2>}
+            {aside && <aside dangerouslySetInnerHTML={{__html: aside }} className="uk-margin-medium-bottom" />}
+            {image && 
+              <div className="uk-flex uk-flex-center">
+                <Image data={{...image.responsiveImage, alt: ''}} style={{maxWidth: "400px", maxHeight: "300px"}} />
+              </div>
+            }
           </div>
+          
           <div>
-            <div className="nov-card nov-card-border uk-width-xlarge">
-              {formLabel && <h4>{formLabel}</h4> }
+            <div className="nov-card">
+            
               <Formik
                 initialValues={{ 
                   title: "",
@@ -90,7 +95,7 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
                       <ErrorMessage name="description" component="div" className="uk-text-danger" />
                     </div>
                     <button type="submit" className="btn uk-button uk-button-secondary" disabled={isSubmitting}>
-                     { isSubmitting ? (<>{loadingMessage}&nbsp;<div uk-spinner="" /></>) : "Submit" }
+                     { isSubmitting ? (<>{loadingMessage}&nbsp;<div uk-spinner="" /></>) : buttonLabel }
                     </button>
                     {
                       status === "success" && 
