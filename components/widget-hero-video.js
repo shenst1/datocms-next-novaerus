@@ -1,7 +1,7 @@
 import NavigationNode from '../components/navigation-node'
 import { useState } from 'react'
 
-export default function WidgetHeroVideo({widget: {button, slides, videoUrl}}) {
+export default function WidgetHeroVideo({widget: {button, slides, videoUrl, hideOnMobile}}) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const slidesLength = slides.length
   const isLastSlide = currentSlide + 1 === slidesLength
@@ -18,7 +18,7 @@ export default function WidgetHeroVideo({widget: {button, slides, videoUrl}}) {
   }
 
   return (
-    <div className="uk-cover-container uk-text-center uk-visible@s" uk-height-viewport="offset-bottom: 10">
+    <div className={`uk-cover-container uk-text-center ${hideOnMobile && "uk-visible@s"}`} uk-height-viewport="offset-bottom: 10">
       <video onEnded={handleVideoEnded} onTimeUpdate={handleTimeUpdate} src={videoUrl} uk-cover="" />
       <div className="uk-position-cover uk-overlay-tertiary">
         <div className="uk-position-center uk-light">

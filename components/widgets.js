@@ -13,10 +13,14 @@ import WidgetSection from "./widget-section";
 import WidgetFindRepresentative from "./widget-find-representative";
 import WidgetHeroVideo from "./widget-hero-video";
 import WidgetContactForm from "./widget-contact-form";
+import WidgetHeroSlideshow from "./widget-hero-slideshow";
 
 export default function Widgets({widgets}) {
   function renderWidget(widget) {
     switch (widget.__typename) {
+      case "WidgetHeroSlideshowRecord":
+        return <WidgetHeroSlideshow widget={widget} />
+        break;
       case "WidgetContactFormRecord":
         return <WidgetContactForm widget={widget} />
         break;
