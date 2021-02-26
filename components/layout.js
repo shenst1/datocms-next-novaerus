@@ -17,7 +17,6 @@ export default function Layout({ preview, children, settings, transparentNavigat
       router.events.off('routeChangeStart', handleRouteChange)
     }
   }, [])
-
  
   return (
     <>
