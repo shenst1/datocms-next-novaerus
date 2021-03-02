@@ -1,9 +1,33 @@
 import Link from 'next/link'
-export default function NavigationNode({node, children, ...rest}) {
+export default function NavigationNode({node, right, left, icon, children, ...rest}) {
+   
+  const inner = () => {
+    if (right && icon) {
+      return (
+        <>
+          <span>{node.label}</span>
+          <i className={icon} />
+        </>
+      )
+    } else if (left && icon) {
+      return (
+        <>
+          <i className={icon} />
+          <span>{node.label}</span>
+        </>
+      )
+    } else {
+      return (
+        <>{node.label}</>
+      )
+    }
+  }
   if (node.link) {
     return (
       <Link as={`/${node.link.slug}`} href="/[slug]">
-        <a {...rest}>{node.label}</a>
+        <a {...rest}>
+          {inner()}
+        </a>
       </Link>
     )
   } else if (node.externalLink) {

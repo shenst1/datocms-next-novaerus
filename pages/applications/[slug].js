@@ -3,8 +3,8 @@ import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import Layout from "../../components/layout";
 import ApplicationShow from "../../components/application-show";
 import { request } from "../../lib/datocms";
-import { layoutFragment, metaTagsFragment } from "../../lib/fragments";
-
+import { layoutFragment, metaTagsFragment, widgets } from "../../lib/fragments";
+import Widgets from "../../components/widgets"
 export async function getStaticPaths() {
   const data = await request({ query: `{ allApplications { slug } }` });
 
@@ -33,17 +33,9 @@ export async function getStaticProps({ params, preview = false }) {
           }
           header
           leadText
-          solutionsHeader
-          solutionsBody
-          iconFacts {
-            fact
-          }
-          solutionsCta {
-            label
-            link {
-              slug
-            }
-          }
+         
+          ${widgets}
+         
         }
       }
       ${metaTagsFragment}
@@ -82,6 +74,7 @@ export default function Application({ subscription, preview }) {
     <Layout settings={settings} preview={preview}>
       <Head>{renderMetaTags(metaTags)}</Head>
       <ApplicationShow application={application} />
+      <Widgets widgets={application.widgets} />
     </Layout>
   );
 }

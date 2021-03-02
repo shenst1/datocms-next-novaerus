@@ -23,11 +23,10 @@ export default function WidgetFactsStats({widget: {header, description, columns,
                 {rows.map((row) => 
                   <>
                     <div className="uk-width-1-1 uk-width-2-5@s">
-                      <Image  data={{ ...row.image.responsiveImage, alt:'' }} />  {row.caption && <h4 className="uk-margin-remove-bottom uk-margin-small">{row.caption}</h4>}
+                      <img data-src={row.image.responsiveImage.src}  width="150" alt='' uk-img="" />
                     </div>
-                    <div className="uk-width-1-1 uk-width-3-5@s uk-text-left@s">
-                      {row.caption && <h4 className="uk-margin-remove-bottom uk-margin-small">{row.caption}</h4>}
-                    </div>
+                    <div className="uk-width-1-1 uk-width-3-5@s uk-text-left@s" dangerouslySetInnerHTML={{__html: row.text}} />
+                    
                   </>
                 )}
               </div>

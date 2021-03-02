@@ -1,14 +1,18 @@
 import Link from 'next/link'
 import { Image } from 'react-datocms'
 
-export default function WidgetProductsPreview({widget: {title,thumbnail, body, products, cardLink }}) {
+export default function WidgetProductsPreview({widget: {title, thumbnail, body, products, cardLink }}) {
 
   return (
     <div className="uk-section uk-background-muted">
       <div className="uk-container">
         <div uk-grid="" className="uk-flex-bottom">
           <div className="uk-width-1-1 uk-width-1-3@s">
-            <h1 className="">{title}</h1>
+            { title && <h2 className="">{title}</h2> }
+            
+            { thumbnail && <img uk-img="" width="240" data-src={thumbnail.responsiveImage.src} data-srcset={thumbnail.responsiveImage.srcSet } /> }
+            
+            
           </div>
           <div className="uk-width-1-1 uk-width-2-3@s">
             <div dangerouslySetInnerHTML={{ __html: body }}></div>

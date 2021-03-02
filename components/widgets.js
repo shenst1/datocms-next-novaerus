@@ -1,4 +1,4 @@
-import WidgetImageRight from "./widget-image-right";
+import WidgetTextImage from "./widget-text-image";
 import WidgetOverlaidImage from "./widget-overlaid-image";
 import WidgetProductsPreview from "./widget-products-preview";
 import WidgetHeroCTA from "./widget-hero-cta";
@@ -16,10 +16,14 @@ import WidgetContactForm from "./widget-contact-form";
 import WidgetHeroSlideshow from "./widget-hero-slideshow";
 import WidgetTestimonialCarousel from "./widget-testimonial-carousel";
 import WidgetContactLandingForm from "./widget-contact-landing-form";
+import WidgetSolutionsGrid from "./widget-solutions-grid";
 
 export default function Widgets({widgets}) {
   function renderWidget(widget) {
     switch (widget.__typename) {
+      case "WidgetSolutionsGridRecord":
+        return <WidgetSolutionsGrid widget={widget} />
+        break;
       case "WidgetContactLandingFormRecord":
         return <WidgetContactLandingForm widget={widget} />
         break;
@@ -56,8 +60,8 @@ export default function Widgets({widgets}) {
       case "WidgetProductDetailGridRecord":
         return <WidgetProductDetails widget={widget} />
         break;
-      case "WidgetFullWidthImageTextRecord":
-        return <WidgetImageRight widget={widget} />
+      case "WidgetTextImageRecord":
+        return <WidgetTextImage widget={widget} />
         break;
       case "WidgetOverlaidImageRecord":
         return <WidgetOverlaidImage widget={widget} />

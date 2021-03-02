@@ -12,30 +12,6 @@ export default function ApplicationShow({ application }) {
           </div>
         </div>
       </div>
-      <div className="uk-section uk-background-cover">
-        <div className="uk-container uk-text-center">
-          <h2>{application.solutionsHeader}</h2>
-          <div className="uk-margin-large-bottom" dangerouslySetInnerHTML={{__html: application.solutionsBody}} />
-          <div uk-grid="" className="uk-flex uk-flex-center uk-flex-around uk-child-width-1-4@m uk-child-width-1-2@s">
-            {
-              application.iconFacts.map((iconFact) => 
-                <div>
-                  <h5 className="uk-margin-small">{iconFact.fact}</h5>
-                </div>
-              )
-            }
-          </div>
-          <div className="uk-text-center uk-margin-medium-top">
-            {
-              application.solutionsCta && (
-                <Link as={`/${application.solutionsCta.link.slug}`} href="/[slug]">
-                  <a className="uk-button uk-button-secondary">{application.solutionsCta.label}</a>
-                </Link>
-              )
-            }
-          </div>
-        </div>
-      </div>
     </>
   )
 }
