@@ -20,10 +20,24 @@ import WidgetSolutionsGrid from "./widget-solutions-grid";
 import DatocmsLink from "./datocms-link";
 import WidgetImageText from "./widget-image-text";
 import WidgetSixColumnGrid from "./widget-six-column-grid";
+import WidgetTestimonialCardGrid from "./widget-testimonial-card-grid";
 
 export default function Widgets({widgets, preview}) {
   function renderWidget(widget) {
     switch (widget.__typename) {
+      case "WidgetTestimonialCardGridRecord":
+        if (preview) {
+          return (
+            <>
+              <WidgetTestimonialCardGrid widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="583205" friendlyName="Testimonial Card Grid" />
+            </>
+          )
+        } else {
+          return <WidgetTestimonialCardGrid widget={widget} />
+        }
+        
+        break;
       case "WidgetSixColumnGridRecord":
         if (preview) {
           return (
