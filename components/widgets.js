@@ -18,10 +18,38 @@ import WidgetTestimonialCarousel from "./widget-testimonial-carousel";
 import WidgetContactLandingForm from "./widget-contact-landing-form";
 import WidgetSolutionsGrid from "./widget-solutions-grid";
 import DatocmsLink from "./datocms-link";
+import WidgetImageText from "./widget-image-text";
+import WidgetSixColumnGrid from "./widget-six-column-grid";
 
 export default function Widgets({widgets, preview}) {
   function renderWidget(widget) {
     switch (widget.__typename) {
+      case "WidgetSixColumnGridRecord":
+        if (preview) {
+          return (
+            <>
+              <WidgetSixColumnGrid widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="583165" friendlyName="Six Column Grid" />
+            </>
+          )
+        } else {
+          return <WidgetSixColumnGrid widget={widget} />
+        }
+        
+        break;
+      case "WidgetImageTextRecord":
+        if (preview) {
+          return (
+            <>
+              <WidgetImageText widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="581647" friendlyName="Image Text" />
+            </>
+          )
+        } else {
+          return <WidgetImageText widget={widget} />
+        }
+        
+        break;
       case "WidgetSolutionsGridRecord":
         if (preview) {
           return (

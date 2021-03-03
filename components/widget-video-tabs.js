@@ -2,8 +2,8 @@ import { Image } from 'react-datocms'
 export default function WidgetVideoTabs({widget: {prefix, header, description, videoTabs }}) {
   return (
     <div className="uk-section">
-      <div className="uk-container uk-container-small">
-        <div className="uk-width-xxlarge uk-margin-auto uk-text-center">
+      <div className="uk-container">
+        <div className=" uk-margin-auto uk-text-center">
           { prefix && <h6 className="uk-text-warning">{prefix}</h6> }
           { header && <h2>{header} </h2>}
           { description && <div className="uk-text-large" dangerouslySetInnerHTML={{__html: description }} />}
