@@ -7,6 +7,7 @@ import Alert from "../components/alert"
 import Footer from "../components/footer"
 import NavigationNode from "../components/navigation-node"
 export default function Layout({ preview, children, settings, transparentNavigation = true }) {
+  console.log("the preview mode ", preview)
   const router = useRouter()
   useEffect(() => {
     const handleRouteChange = () => {
@@ -65,7 +66,6 @@ export default function Layout({ preview, children, settings, transparentNavigat
             </div>
           </nav>
         </div>
-        <Alert preview={preview} />
         <main uk-height-viewport="expand: true">
           {children}
         </main>

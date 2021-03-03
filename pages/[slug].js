@@ -36,6 +36,7 @@ export async function getStaticProps({ params, preview = false }) {
 
   return {
     props: {
+      preview,
       subscription: preview
         ? {
             ...graphqlRequest,
@@ -56,11 +57,10 @@ export default function Page({ subscription, preview }) {
   } = useQuerySubscription(subscription);
 
   const metaTags = page.seo
-
   return (
     <Layout settings={settings} preview={preview} transparentNavigation={page.transparentNavigation}>
       <Head>{renderMetaTags(metaTags)}</Head>
-      <Widgets widgets={page.widgets} />
+      <Widgets widgets={page.widgets} preview={preview} />
     </Layout>
   );
 }

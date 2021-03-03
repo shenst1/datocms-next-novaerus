@@ -49,6 +49,7 @@ export async function getStaticProps({ params, preview = false }) {
 
   return {
     props: {
+      preview,
       subscription: preview
         ? {
             ...graphqlRequest,
@@ -74,7 +75,7 @@ export default function Application({ subscription, preview }) {
     <Layout settings={settings} preview={preview}>
       <Head>{renderMetaTags(metaTags)}</Head>
       <ApplicationShow application={application} />
-      <Widgets widgets={application.widgets} />
+      <Widgets widgets={application.widgets} preview={preview} />
     </Layout>
   );
 }

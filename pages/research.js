@@ -52,6 +52,7 @@ export async function getStaticProps({ preview }) {
 
   return {
     props: {
+      preview,
       researchLinkCollection,
       metaInfo,
       researchArticleCollections: [labStudiesCollecton, clinicalTrialsCollection, caseStudiesCollection],

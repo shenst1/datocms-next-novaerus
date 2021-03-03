@@ -31,6 +31,7 @@ export async function getStaticProps({ params, preview = false }) {
 
   return {
     props: {
+      preview,
       researchArticle,
       subscription: preview
         ? {

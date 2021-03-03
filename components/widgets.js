@@ -17,66 +17,239 @@ import WidgetHeroSlideshow from "./widget-hero-slideshow";
 import WidgetTestimonialCarousel from "./widget-testimonial-carousel";
 import WidgetContactLandingForm from "./widget-contact-landing-form";
 import WidgetSolutionsGrid from "./widget-solutions-grid";
+import DatocmsLink from "./datocms-link";
 
-export default function Widgets({widgets}) {
+export default function Widgets({widgets, preview}) {
   function renderWidget(widget) {
     switch (widget.__typename) {
       case "WidgetSolutionsGridRecord":
-        return <WidgetSolutionsGrid widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetSolutionsGrid widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="581688" friendlyName="Solutions Grid" />
+            </>
+          )
+        } else {
+          return <WidgetSolutionsGrid widget={widget} />
+        }
+        
         break;
       case "WidgetContactLandingFormRecord":
-        return <WidgetContactLandingForm widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetContactLandingForm widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="577204" friendlyName="Contact Landing Form" />
+            </>
+          )
+        } else {
+          return <WidgetContactLandingForm widget={widget} />
+        }
         break;
       case "WidgetTestimonialCarouselRecord":
-        return <WidgetTestimonialCarousel widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetTestimonialCarousel widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="545413" friendlyName="Testimonial Carousel" />
+            </>
+          )
+        } else {
+          return <WidgetTestimonialCarousel widget={widget} />
+        }
         break;
       case "WidgetHeroSlideshowRecord":
-        return <WidgetHeroSlideshow widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetHeroSlideshow widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="574151" friendlyName="Hero Slideshow" />
+            </>
+          )
+        } else {
+          return <WidgetHeroSlideshow widget={widget} />
+        }
         break;
       case "WidgetContactFormRecord":
-        return <WidgetContactForm widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetContactForm widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="571889" friendlyName="Contact Form" />
+            </>
+          )
+        } else {
+          return <WidgetContactForm widget={widget} />
+        }
         break;
       case "WidgetHeroVideoRecord":
-        return <WidgetHeroVideo widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetHeroVideo widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="561671" friendlyName="Hero Video" />
+            </>
+          )
+        } else {
+          return <WidgetHeroVideo widget={widget} />
+        }
         break;
       case "WidgetFindARepresentativeRecord":
-        return <WidgetFindRepresentative widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetFindRepresentative widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="557353" friendlyName="Find a Representative" />
+            </>
+          )
+        } else {
+          return <WidgetFindRepresentative widget={widget} />
+        }
         break;
       case "WidgetSectionRecord":
-        return <WidgetSection widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetSection widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="553694" friendlyName="Section" />
+            </>
+          )
+        } else {
+          return <WidgetSection widget={widget} />
+        }
         break;
       case "WidgetFactsStatsSectionRecord":
-        return <WidgetFactsStats widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetFactsStats widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="553301" friendlyName="Facts &nbsp; Stats" />
+            </>
+          )
+        } else {
+          return <WidgetFactsStats widget={widget} />
+        }
         break;
       case "WidgetHeroRecord":
-        return <WidgetHero widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetHero widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="553172" friendlyName="Hero" />
+            </>
+          )
+        } else {
+          return <WidgetHero widget={widget} />
+        }
         break;
       case "WidgetVideoTabsSectionRecord":
-        return <WidgetVideoTabs widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetVideoTabs widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="553258" friendlyName="Video Tabs" />
+            </>
+          )
+        } else {
+          return <WidgetVideoTabs widget={widget} />
+        }
         break;
       case "WidgetTwoColumnVideoCtaRecord":
-        return <WidgetTwoColumnVideoCta widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetTwoColumnVideoCta widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="553118" friendlyName="Two Column Video Ctas" />
+            </>
+          )
+        } else {
+          return <WidgetTwoColumnVideoCta widget={widget} />
+        }
         break;
       case "WidgetProductDetailGridRecord":
-        return <WidgetProductDetails widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetProductDetails widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="551901" friendlyName="Product Detail Grid" />
+            </>
+          )
+        } else {
+          return <WidgetProductDetails widget={widget} />
+        }
         break;
       case "WidgetTextImageRecord":
-        return <WidgetTextImage widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetTextImage widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="534054" friendlyName="Text Image" />
+            </>
+          )
+        } else {
+          return <WidgetTextImage widget={widget} />
+        }
         break;
       case "WidgetOverlaidImageRecord":
-        return <WidgetOverlaidImage widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetOverlaidImage widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="543093" friendlyName="Overlaid Image" />
+            </>
+          )
+        } else {
+          return <WidgetOverlaidImage widget={widget} />
+        }
         break;
       case "WidgetProductsPreviewRecord":
-        return <WidgetProductsPreview widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetProductsPreview widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="543208" friendlyName="Products Preview" />
+            </>
+          )
+        } else {
+          return <WidgetProductsPreview widget={widget} />
+        }
         break;
       case "WidgetHeroCtaRecord":
-        return <WidgetHeroCTA widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetHeroCTA widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="545566" friendlyName="Hero CTA" />
+            </>
+          )
+        } else {
+          return <WidgetHeroCTA widget={widget} />
+        }
         break;
       case "WidgetTextHeaderRecord":
-        return <WidgetHeader widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetHeader widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="534046" friendlyName="Header" />
+            </>
+          )
+        } else {
+          return <WidgetHeader widget={widget} />
+        }
         break;
       case "WidgetApplicationGridRecord":
-        return <WidgetApplicationGrid widget={widget} />
+        if (preview) {
+          return (
+            <>
+              <WidgetApplicationGrid widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="548046" friendlyName="Hero" />
+            </>
+          )
+        } else {
+          return <WidgetApplicationGrid widget={widget} />
+        }
         break;
     }
   }

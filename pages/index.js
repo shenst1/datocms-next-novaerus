@@ -24,6 +24,7 @@ export async function getStaticProps({ preview }) {
 
   return {
     props: {
+      preview,
       subscription: preview
         ? {
             ...graphqlRequest,
@@ -38,7 +39,7 @@ export async function getStaticProps({ preview }) {
   };
 }
 
-export default function Index({ subscription }) {
+export default function Index({ subscription, preview }) {
   const {
     data: { settings },
   } = useQuerySubscription(subscription);
@@ -46,7 +47,7 @@ export default function Index({ subscription }) {
   return (
     <>
       <Layout settings={ settings } preview={subscription.preview}>
-        <Widgets widgets={settings.homePage.widgets} />
+        <Widgets widgets={settings.homePage.widgets} preview={preview} />
       </Layout>
     </>
   );
