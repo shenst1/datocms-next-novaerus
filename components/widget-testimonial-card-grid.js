@@ -2,8 +2,8 @@
 import { Image} from 'react-datocms'
 export default function WidgetTestimonialCardGrid({widget: {header, backgroundImage: {responsiveImage}, testimonials}}) {
   return (
-    <section uk-img="" data-srcset={responsiveImage && responsiveImage.srcSet} data-sizes={responsiveImage && responsiveImage.sizes} class="uk-section uk-background-center-center uk-background-norepeat">
-      <div class="uk-container">
+    <section uk-img="" data-srcset={responsiveImage && responsiveImage.srcSet} data-sizes={responsiveImage && responsiveImage.sizes} className="uk-section uk-background-center-center uk-background-norepeat">
+      <div className="uk-container">
         <div>
           { header && <h2 className="uk-text-center uk-margin-medium-bottom">{ header}</h2>}
         </div>
@@ -12,17 +12,17 @@ export default function WidgetTestimonialCardGrid({widget: {header, backgroundIm
           {
             testimonials.map(({id, image, excerpt, quote}) =>
               <div key={id}>
-                <div class="uk-card uk-card-default">
-                  <div class="uk-card-media-top">
-                    <figure class="uk-text-center">
+                <div className="uk-card uk-card-default">
+                  <div className="uk-card-media-top">
+                    <figure className="uk-text-center">
                       { image && <Image data={{...image.responsiveImage, alt: ""}} />}
                     </figure>
                   </div>
-                  <div class="uk-flex-1 uk-card-body">
+                  <div className="uk-flex-1 uk-card-body">
                     { excerpt && <div dangerouslySetInnerHTML={{__html: excerpt}} />}
                     
                     <blockquote>
-                      <div class="uk-text-large">
+                      <div className="uk-text-large">
                       { quote && <div dangerouslySetInnerHTML={{__html: quote}} />}
                       </div>
                     </blockquote>

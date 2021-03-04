@@ -1,12 +1,14 @@
 .uk-navbar-nav > li > a {
   font-weight: 600;
   padding: 0 8px;
+  font-size: 13px;
   text-transform: uppercase;
   font-family: $global-font-family;
   @include l {
     padding: 0 15px;
   }
 }
+
 .uk-navbar-dropdown {
   box-shadow: none;
   padding: 0;
@@ -34,14 +36,21 @@
     }
   }
 }
+.uk-navbar-left {
+  li {
+    a {
+      .icomoon-menu {
+        font-size: 30px;
+      }
+    }
+  }
+}
 .uk-navbar-right {
   li {
     a {
       font-size: 12px;
       font-weight: 400;
-      .icomoon-menu {
-        font-size: 30px;
-      }
+      
       .fa-sign-out {
         font-size: 20px;
         margin-right: 6px;
