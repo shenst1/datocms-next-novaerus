@@ -10,10 +10,10 @@ export default function WidgetTestimonialCarousel({widget: {backgroundImage, tes
             <div  className="uk-slider-container">
               <ul className="uk-child-width-1-1 uk-slider-items">
                 {
-                  testimonials.map(({image, title, quote, url, buttonLabel}) => 
+                  testimonials.map(({thumbnail, title, quote, url, buttonLabel}) => 
                     <li>
                       <div className="uk-text-center uk-flex uk-flex-middle uk-flex-center uk-margin-bottom">
-                        { image && <img uk-img="" data-src={ image.responsiveImage.src} width="60" className="nov-scrollspy-ignore uk-margin-right" /> }
+                        { thumbnail && <img uk-img="" data-src={ thumbnail.responsiveImage.src} width="60" className="nov-scrollspy-ignore uk-margin-right" /> }
                         { title && <h3 className="uk-margin-remove">{ title}</h3>}
                       </div>
                       <div>
