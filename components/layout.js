@@ -25,8 +25,11 @@ export default function Layout({ preview, children, settings, transparentNavigat
       {/* uk-scrollspy="target: img:not(.nov-scrollspy-ignore); cls:uk-animation-fade; delay: 100" */}
       <div className="uk-offcanvas-content">
         <div className={`uk-navbar-container ${transparentNavigation && 'uk-sticky-remove-placeholder' }`} uk-sticky="">
+          {preview && <div className="uk-position-top-left"><a href="/api/exit-preview" className="uk-button uk-button-small uk-button-danger">Exit Preview Mode</a></div> }
           <nav className="uk-container" uk-navbar="mode: click;">
             <div className="uk-navbar-left">
+             
+              
               <ul className="uk-navbar-nav">
                 <li className="nav_hamburger">
                   <a href="#mobile-navigation" uk-toggle="">
