@@ -28,6 +28,22 @@ export default function Layout({ preview, children, settings, transparentNavigat
           <nav className="uk-container" uk-navbar="mode: click;">
             <div className="uk-navbar-left">
               <ul className="uk-navbar-nav">
+                <li className="nav_hamburger">
+                  <a href="#mobile-navigation" uk-toggle="">
+                    <i className="icomoon-menu"></i>
+                    </a>
+                </li>
+                {
+                  settings.mainNavigation.children.map((node) =>  
+                    <li key={node.id} className="uk-visible@m">
+                      <NavigationNode node={node} className="nav_menu_link" />
+                    </li>
+                  )
+                }
+              </ul>
+            </div>
+            <div className="uk-navbar-center">
+              <ul className="uk-navbar-nav">
                 <li>
                   <Link  as={`/`} href="/">
                     <a className="uk-navbar-item uk-logo">
@@ -40,25 +56,22 @@ export default function Layout({ preview, children, settings, transparentNavigat
                     </a>
                   </Link>
                 </li>
-              </ul>
-            </div>
-            <div className="uk-navbar-center uk-visible@m">
-              <ul className="uk-navbar-nav">
-                {
-                  settings.mainNavigation.children.map((node) =>  
-                    <li key={node.id}>
-                      <NavigationNode node={node} className="nav_menu_link" />
-                    </li>
-                  )
-                }
+               
               </ul>
             </div>
             <div className="uk-navbar-right">
               <ul className="uk-navbar-nav">
-                <li className="nav_hamburger">
-                  <a href="#mobile-navigation" uk-toggle="">
-                    <i className="icomoon-menu"></i>
+                <li className="uk-visible@m">
+                  <Link href={"/contact-us"}>
+                    <a className="nov-text-semibold">
+                      <i className="icomoon-message-square"></i> Contact
                     </a>
+                  </Link>
+                </li>
+                <li className="uk-visible@m">
+                  <a href={"https://partners.novaerus.com/logins/sign_in"} className="nov-text-semibold" target="_blank">
+                    <i className="icomoon-lock"></i> Partner login
+                  </a>
                 </li>
               </ul>
             </div>
@@ -67,7 +80,7 @@ export default function Layout({ preview, children, settings, transparentNavigat
         <main uk-height-viewport="expand: true">
           {children}
         </main>
-        <nav id="mobile-navigation" uk-offcanvas="mode: push; overlay: true; flip: true;">
+        <nav id="mobile-navigation" uk-offcanvas="mode: push; overlay: true;">
           <div className="uk-offcanvas-bar uk-padding-remove">
             <div className="uk-container">
               <div className="uk-navbar-center">
@@ -91,6 +104,17 @@ export default function Layout({ preview, children, settings, transparentNavigat
               {
                 settings.mainNavigation.children.map((node, i) =>  
                   <>
+                    <li className="uk-nav-divider uk-hidden@m"></li>
+                    <li className="uk-hidden@m">
+                      <NavigationNode node={node} />
+                    </li>
+
+                  </>
+                )
+              }
+              {
+                settings.drawerNavigation.children.map((node, i) =>  
+                  <>
                     <li className="uk-nav-divider"></li>
                     <li>
                       <NavigationNode node={node} />
@@ -104,15 +128,17 @@ export default function Layout({ preview, children, settings, transparentNavigat
             <ul className="uk-nav-default" uk-nav="">
               <li className="uk-nav-divider"></li>
               <li>
-              
-                  <i className="icomoon-message-square"></i> Contact
-              
+                <Link href={"/contact-us"}>
+                  <a className="nov-text-semibold uk-text-uppercase">
+                    <i className="icomoon-message-square"></i> Contact
+                  </a>
+                </Link>
               </li>
               <li className="uk-nav-divider"></li>
               <li>
-              
+                <a href={"https://partners.novaerus.com/logins/sign_in"} className="nov-text-semibold uk-text-uppercase" target="_blank">
                   <i className="icomoon-lock"></i> Partner login
-              
+                </a>
               </li>
               <li className="uk-nav-divider"></li>
             </ul>

@@ -8,20 +8,4 @@
   transform: rotate(180deg);
 }
 
-/* Overrides */
-.uk-navbar-nav > li > a {
-  font-size: 13px;
-  padding: 0px 8px;
-}
 
-.hide_override {
-  @media screen and (max-width: 1060px) {
-    display: none;
-  }
-}
-
-.nav_hamburger{
-  @media screen and (min-width: 1061px) {
-    display: none;
-  }
-}
