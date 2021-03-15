@@ -42,10 +42,11 @@ export default function Index({ subscription }) {
   const {
     data: { settings },
   } = useQuerySubscription(subscription);
-
+  const metaTags = settings.homePage.seo
   return (
     <>
       <Layout settings={ settings } preview={subscription.preview}>
+        <Head>{renderMetaTags(metaTags)}</Head>
         <Widgets widgets={settings.homePage.widgets} preview={subscription.preview} />
       </Layout>
     </>

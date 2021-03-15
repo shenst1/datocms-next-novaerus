@@ -2,7 +2,7 @@ import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import Layout from "../components/layout";
 import { request } from "../lib/datocms";
-import {  layoutFragment, responsiveImageFragment } from "../lib/fragments";
+import {  layoutFragment, metaTagsFragment } from "../lib/fragments";
 import WidgetHeroCTA from "../components/widget-hero-cta";
 import ResearchFilters from "../components/research-filters"
 export async function getStaticProps({ preview }) {
@@ -40,12 +40,16 @@ export async function getStaticProps({ preview }) {
             }
           }
           testResultsBody
+          seo: _seoMetaTags {
+            ...metaTagsFragment
+          }
         }
         settings: setting {
           ...layoutFragment
         }
       }
       ${layoutFragment}
+      ${metaTagsFragment}
     `,
     preview,
   };
@@ -73,9 +77,11 @@ export default function Research({ subscription, researchLinkCollection, researc
   const {
     data: { settings, research },
   } = useQuerySubscription(subscription);
+  const metaTags = research.seo
   return (
     <>
       <Layout settings={ settings } preview={subscription.preview} transparentNavigation={false}>
+        <Head>{renderMetaTags(metaTags)}</Head>
         {research.heroWidget && <WidgetHeroCTA widget={research.heroWidget} /> }
         <ResearchFilters metaInfo={metaInfo} research={research} researchLinkCollection={researchLinkCollection} researchArticleCollections={researchArticleCollections} />
       </Layout>

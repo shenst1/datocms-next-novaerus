@@ -38,10 +38,10 @@ export default function WidgetTestimonialCarousel({widget: {backgroundImage, tes
               </ul>
             </div>
             <a className="uk-position-center-left-out  uk-slidenav-large uk-slidenav-previous uk-slidenav uk-icon uk-visible@s" href="#" uk-slider-item="previous">
-              <svg width="25" height="40" viewBox="0 0 25 40" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" stroke-width="2" points="20.527,1.5 2,20.024 20.525,38.547 "></polyline></svg>
+              <svg width="25" height="40" viewBox="0 0 25 40" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" strokeWidth="2" points="20.527,1.5 2,20.024 20.525,38.547 "></polyline></svg>
             </a>
             <a className="uk-position-center-right-out uk-slidenav-large uk-slidenav-previous uk-slidenav uk-icon uk-visible@s" href="#" uk-slider-item="next" >
-              <svg width="25" height="40" viewBox="0 0 25 40" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" stroke-width="2" points="4.002,38.547 22.527,20.024 4,1.5 "></polyline></svg>
+              <svg width="25" height="40" viewBox="0 0 25 40" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" strokeWidth="2" points="4.002,38.547 22.527,20.024 4,1.5 "></polyline></svg>
             </a>
           </div>
           <ul className="uk-slider-nav uk-dotnav uk-flex-center uk-margin-small-top"></ul>

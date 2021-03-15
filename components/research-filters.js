@@ -42,7 +42,7 @@ export default function WidgetResearch({metaInfo, researchLinkCollection, resear
       else if(item.name && item.name.toLowerCase().includes(searchValue) || item.excerpt && item.excerpt.toLowerCase().includes(searchValue)) {
           return item
       }
-    }).map((item) => <ArticleCard article={item} /> );
+    }).map((item) => <ArticleCard key={item.id} article={item} /> );
     return (
       <li className={`uk-animation-fade ${isActive && "uk-active"}`}>
         <div uk-grid="masonry: true" className="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m">
@@ -76,10 +76,10 @@ export default function WidgetResearch({metaInfo, researchLinkCollection, resear
         </div>
         <div className="uk-margin-auto uk-width-xxlarge uk-margin-medium-bottom">
           <ul className="uk-flex-center uk-tab" uk-tab="connect: #articles">
-            <li data-index={0} className={0 === activeTabIndex && "uk-active"}><a onClick={() => setActiveTabIndex(0)}>{`Test Results`}</a></li>
+            <li data-index={0} className={0 === activeTabIndex ? "uk-active" : ""}><a onClick={() => setActiveTabIndex(0)}>{`Test Results`}</a></li>
             {
               ["Lab studies", "Clinical trials", "Case studies"].map((tabLink, i) =>
-                <li data-index={i + 1} className={i + 1 === activeTabIndex && "uk-active"}><a onClick={() => setActiveTabIndex(i+1)}>{tabLink}</a></li>
+                <li key={i} data-index={i + 1} className={i + 1 === activeTabIndex ? "uk-active" : ""}><a onClick={() => setActiveTabIndex(i+1)}>{tabLink}</a></li>
               )
             }
           </ul>
@@ -90,7 +90,7 @@ export default function WidgetResearch({metaInfo, researchLinkCollection, resear
             <div className="uk-container uk-container-small uk-text-center uk-margin-medium-bottom" dangerouslySetInnerHTML={{__html: testResultsBody}} />
             {
               researchLinkCollection.children.map(collection =>
-                <div className="table-link-container">
+                <div key={collection.id} className="table-link-container">
                   <div className="outer-image-section">
                       <div className="image-section">
                         {collection.featured_image && <img src={collection.featured_image} width="60" alt=""/>}
@@ -103,35 +103,36 @@ export default function WidgetResearch({metaInfo, researchLinkCollection, resear
                   </div>
                   <div>
                     <table className="uk-table uk-table-divider research-table-body">
-                    <tr>
-                      <th>Name</th>
-                      <th>Reduc<span className="hide-mid">tion</span><span className="show-mid">.</span></th>
-                      <th className="hide-mobile">Time</th>
-                      <th className="hide-mobile">Space</th>
-                      <th>Model</th>
-                    </tr>
-                    {
-                      collection.items.map((item) => 
+                      <tbody>
                         <tr>
-                          <td>
-                            <Link as={item.excerpt} href="/research/[:id]">
-                              <a className="link-style" dangerouslySetInnerHTML={{__html: item.name}} />
-                            </Link>
-                          </td>
-                          <td>
-                            {item.author}
-                          </td>
-                          <td className="hide-mobile">
-                            {item.url}
-                          </td>
-                          <td className="hide-mobile" dangerouslySetInnerHTML={{__html: item.citation}} />
-                          <td>
-                            {item.aside}
-                          </td>
-                        </tr>
-                      )
-                    }
-                    
+                        <th>Name</th>
+                        <th>Reduc<span className="hide-mid">tion</span><span className="show-mid">.</span></th>
+                        <th className="hide-mobile">Time</th>
+                        <th className="hide-mobile">Space</th>
+                        <th>Model</th>
+                      </tr>
+                      {
+                        collection.items.map((item) => 
+                          <tr key={item.id}>
+                            <td>
+                              <Link as={item.excerpt} href="/research/[:id]">
+                                <a className="link-style" dangerouslySetInnerHTML={{__html: item.name}} />
+                              </Link>
+                            </td>
+                            <td>
+                              {item.author}
+                            </td>
+                            <td className="hide-mobile">
+                              {item.url}
+                            </td>
+                            <td className="hide-mobile" dangerouslySetInnerHTML={{__html: item.citation}} />
+                            <td>
+                              {item.aside}
+                            </td>
+                          </tr>
+                        )
+                      }
+                    </tbody>
                 </table>
               </div>
             </div>

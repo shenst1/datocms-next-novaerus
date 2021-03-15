@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Image } from 'react-datocms'
-
+import NavigationNode from '../components/navigation-node'
 export default function Footer({footer}) {
   const {subscribeHeader, connectHeader, buttonTitle, navigation, socialHeader, socialLinks, partnerHeader, lowerNavigation, copyright, disclaimer, partners } = footer;
   return (
@@ -34,10 +34,8 @@ export default function Footer({footer}) {
                   <ul className="uk-list uk-margin-remove">
                     {
                       navigation.children.map((node) => (
-                        <li key={node.link?.id}>
-                          <Link as={`/${node?.link?.slug}`} href="/[slug]">
-                            <a>{node.label}</a>
-                          </Link>
+                        <li key={node.id}>
+                          <NavigationNode node={node} />
                         </li>
                       ))
                     }
@@ -49,8 +47,8 @@ export default function Footer({footer}) {
                 <h4 className="uk-text-uppercase">{socialHeader}</h4>
                 <div>
                   {
-                    socialLinks.map((link) => 
-                      <a href={link.url} className="uk-margin-small-right" target="_blank"><i className={`icomoon-${link.icomoonName} nov-icon-social`} /></a>
+                    socialLinks.map((link, i) => 
+                      <a key={i} href={link.url} className="uk-margin-small-right" target="_blank"><i className={`icomoon-${link.icomoonName} nov-icon-social`} /></a>
                     )
                   }
                 </div>
@@ -63,6 +61,7 @@ export default function Footer({footer}) {
                   {
                     partners?.map(partner => 
                       <Image
+                        key={partner.id }
                         data={{
                           ...partner.image.responsiveImage,
                           alt:'',
@@ -84,10 +83,8 @@ export default function Footer({footer}) {
                 <ul className="uk-subnav uk-subnav-divider">
                   {
                     lowerNavigation.children.map((node) => (
-                      <li key={node.link?.id}>
-                        <Link as={`/${node?.link?.slug}`} href="/[slug]">
-                          <a>{node.label}</a>
-                        </Link>
+                      <li key={node.id}>
+                        <NavigationNode node={node} />
                       </li>
                     ))
                   }
