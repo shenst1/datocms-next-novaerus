@@ -22,7 +22,7 @@ export default function WidgetTestimonialCarousel({widget: {backgroundImage, tes
                           {
                             url && buttonLabel && 
                               <Link  href={ url}>
-                                <a className="uk-link nov-button-icon-link uk-flex uk-flex-inline uk-flex-middle uk-flex-right uk-text-large nov-text-semibold">
+                                <a className="uk-link nov-button-icon-link uk-flex uk-flex-inline uk-flex-middle uk-flex-right nov-text-semibold">
                                   <span>{buttonLabel}</span>
                                   <i className="icomoon-arrow-right-circle" />
                                 </a>

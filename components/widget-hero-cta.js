@@ -13,8 +13,6 @@ export default function WidgetOverlaidImage({widget: {title, leadText, body, bac
           {
             body && <div className="uk-text-large" dangerouslySetInnerHTML={{__html: body}} />
           }
-      
-         
           {
             button && (
               <div className="uk-margin-medium-top">

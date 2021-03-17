@@ -11,7 +11,7 @@ export default function ArticleCard({article}) {
             </div>
             <div className="uk-flex-1" dangerouslySetInnerHTML={{__html: article.excerpt}} />
             <div className="uk-text-right uk-flex-none">
-              <div className="uk-link nov-button-icon-link uk-flex uk-flex-inline uk-flex-middle uk-text-large nov-text-semibold">
+              <div className="uk-link nov-button-icon-link uk-flex uk-flex-inline uk-flex-middle nov-text-semibold">
                 <span>Full Report</span>
                 <i className="icomoon-arrow-right-circle" />
               </div>

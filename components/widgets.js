@@ -21,10 +21,24 @@ import DatocmsLink from "./datocms-link";
 import WidgetImageText from "./widget-image-text";
 import WidgetSixColumnGrid from "./widget-six-column-grid";
 import WidgetTestimonialCardGrid from "./widget-testimonial-card-grid";
+import WidgetIconModal from "./widget-icon-modal";
 
 export default function Widgets({widgets, preview}) {
   function renderWidget(widget) {
     switch (widget.__typename) {
+      case "WidgetIconModalSectionRecord":
+        if (preview) {
+          return (
+            <>
+              <WidgetIconModal widget={widget} />
+              <DatocmsLink itemId={widget.id} modelId="605812" friendlyName="Icon Modal Illustration" />
+            </>
+          )
+        } else {
+          return <WidgetIconModal widget={widget} />
+        }
+        
+        break;
       case "WidgetTestimonialCardGridRecord":
         if (preview) {
           return (

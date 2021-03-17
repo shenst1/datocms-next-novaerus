@@ -80,7 +80,7 @@ export default function Research({ subscription, researchLinkCollection, researc
   const metaTags = research.seo
   return (
     <>
-      <Layout settings={ settings } preview={subscription.preview} transparentNavigation={false}>
+      <Layout settings={ settings } preview={subscription.preview} transparentNavigation={true}>
         <Head>{renderMetaTags(metaTags)}</Head>
         {research.heroWidget && <WidgetHeroCTA widget={research.heroWidget} /> }
         <ResearchFilters metaInfo={metaInfo} research={research} researchLinkCollection={researchLinkCollection} researchArticleCollections={researchArticleCollections} />
