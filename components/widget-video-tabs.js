@@ -3,7 +3,7 @@ export default function WidgetVideoTabs({widget: {prefix, header, description, v
   return (
     <div className="uk-section">
       <div className="uk-container">
-        <div className=" uk-margin-auto uk-text-center">
+        <div className=" uk-margin-auto uk-text-center uk-container-small">
           { prefix && <h6 className="uk-text-warning">{prefix}</h6> }
           { header && <h2>{header} </h2>}
           { description && <div className="uk-text-large" dangerouslySetInnerHTML={{__html: description }} />}

@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function WidgetTestimonialCarousel({widget: {backgroundImage, testimonials}}) {
   return (
     <div uk-img="" data-srcset={backgroundImage.responsiveImage.srcSet} data-sizes={backgroundImage.responsiveImage.sizes} className="uk-section uk-section-large uk-background-top-center uk-background-norepeat">
-      <div className="uk-container">
+      <div className="uk-container uk-container-small">
         <div uk-slider="autoplay: true; autoplay-interval: 10000;">
           <div className="uk-position-relative">
             <div  className="uk-slider-container">
@@ -16,8 +16,8 @@ export default function WidgetTestimonialCarousel({widget: {backgroundImage, tes
                         { thumbnail && <img uk-img="" data-src={ thumbnail.responsiveImage.src} width="60" className="nov-scrollspy-ignore uk-margin-right" /> }
                         { title && <h3 className="uk-margin-remove">{ title}</h3>}
                       </div>
-                      <div>
-                      <blockquote className="uk-text-large uk-padding" dangerouslySetInnerHTML={{ __html:  quote}} />
+                      <div className="uk-margin-auto uk-container-small uk-padding">
+                        <blockquote className="uk-text-large uk-padding" dangerouslySetInnerHTML={{ __html:  quote}} />
                         <div className="uk-text-right">
                           {
                             url && buttonLabel && 
@@ -27,8 +27,7 @@ export default function WidgetTestimonialCarousel({widget: {backgroundImage, tes
                                   <i className="icomoon-arrow-right-circle" />
                                 </a>
                               </Link>
-                          }
-                          
+                          }  
                         </div>
                       </div>
                     </li>

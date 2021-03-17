@@ -3,17 +3,18 @@ import { Formik, Field, ErrorMessage } from 'formik';
 import {Image } from "react-datocms"
 import { useRouter } from 'next/router'
 
-export default function WidgetContactLandingForm({widget: {title, aside, buttonLabel, successMessage, loadingMessage, emailRecipient, showSector, image, alignment}}) {
+export default function WidgetContactLandingForm({widget: {title, aside, buttonLabel, successMessage, loadingMessage, emailRecipient, showSector, showMessage, image, alignment}}) {
   const router = useRouter()
   const contactForm = () => {
     return (
       <Formik
         initialValues={{ 
           title: "",
-          description: "",
+          description: showMessage ? "" : "N/A",
           name: "",
           phone: "",
           email: "",
+          sector: "",
           referral: router.query.slug,
           recipient: emailRecipient
         }}
@@ -25,7 +26,10 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
             errors.email = 'Invalid email address';
           }
         
-          if (!values.description) {
+          if (!values.description && showMessage) {
+            errors.description = 'Required'
+          }
+          if (!values.sector && showSector) {
             errors.description = 'Required'
           }
           if (!values.name) {
@@ -42,9 +46,15 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
               },
               body: JSON.stringify(values)
             });
-            resetForm()
-            setStatus('success')
+            if (response.ok) {
+              resetForm()
+              setStatus('success')
+            } else {
+              setStatus('error')
+            }
+           
           } catch(error) {
+            console.log(error)
             setStatus('error')
           }
         
@@ -60,6 +70,21 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
               <label className="uk-form-label">Company name</label>
               <Field type="text" placeholder="Acme inc" className="uk-input" name="title" />
             </div>
+            {
+              showSector && 
+                <div className="uk-margin">
+                  <abbr title="required">*</abbr>
+                  <label className="uk-form-label">Sector</label>
+                  <Field as="select" placeholder="yourname@example.com" className="uk-input" name="sector" >
+                    <option value="">Select one</option>
+                    <option value="Dental">Dental</option>
+                    <option value="Medical">Medical</option>
+                    <option value="Non-Medical">Non-Medical</option>
+                  </Field>
+                  <ErrorMessage name="sector" component="div" className="uk-text-danger" />
+                </div>
+            }
+           
             <div className="uk-margin">
               <abbr title="required">*</abbr>
               <label className="uk-form-label">Full name</label>
@@ -76,12 +101,16 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
               <label className="uk-form-label">Phone</label>
               <Field type="phone" placeholder="555-555-5555" className="uk-input" name="phone" />
             </div>
-            <div className="uk-margin">
-              <abbr title="required">*</abbr>
-              <label className="uk-form-label">Message</label>
-              <Field as="textarea" rows={5} placeholder="Type your message here" className="uk-textarea" name="description" />
-              <ErrorMessage name="description" component="div" className="uk-text-danger" />
-            </div>
+            {
+              showMessage && 
+                <div className="uk-margin">
+                  <abbr title="required">*</abbr>
+                  <label className="uk-form-label">Message</label>
+                  <Field as="textarea" rows={5} placeholder="Type your message here" className="uk-textarea" name="description" />
+                  <ErrorMessage name="description" component="div" className="uk-text-danger" />
+                </div>
+            }
+            
             <button type="submit" className="btn uk-button uk-button-secondary" disabled={isSubmitting}>
             { isSubmitting ? (<>{loadingMessage}&nbsp;<div uk-spinner="" /></>) : buttonLabel }
             </button>
@@ -107,7 +136,7 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
   }
   return (
     <div className="uk-section">
-      <div className="uk-container">
+      <div className="uk-container uk-container-small">
         {
           alignment === "left" ? (
             <div uk-grid="" className="uk-grid-large uk-child-width-1-2@m">

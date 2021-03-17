@@ -40,18 +40,24 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
                   }
                   return errors;
                 }}
+                
                 onSubmit={async (values, { setStatus, resetForm }) => {
                   try {
-                    const response = await fetch(`/api/tickets`, {
+                    await fetch(`/api/tickets`, {
                       method: 'POST', 
                       headers: {
                         'Content-Type': 'application/json'
                       },
                       body: JSON.stringify(values)
                     });
-                    resetForm()
-                    setStatus('success')
+                    if (response.ok) {
+                      resetForm()
+                      setStatus('success')
+                    } else {
+                      setStatus('error')
+                    }
                   } catch(error) {
+                    console.log(error)
                     setStatus('error')
                   }
                  

@@ -72,7 +72,7 @@ export default function Application({ subscription, preview }) {
   const metaTags = application.seo
 
   return (
-    <Layout settings={settings} preview={preview}>
+    <Layout settings={settings} preview={preview} transparentNavigation={false}>
       <Head>{renderMetaTags(metaTags)}</Head>
       <ApplicationShow application={application} />
       <Widgets widgets={application.widgets} preview={preview} />
