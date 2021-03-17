@@ -1,0 +1,10 @@
+.mailchimp-subscribe {
+  input {
+    @extend .uk-input;
+    margin-bottom: 10px;
+  }
+  button {
+    @extend .uk-button;
+    @extend .uk-button-secondary;
+  }
+}

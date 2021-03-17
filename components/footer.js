@@ -1,6 +1,7 @@
-import Link from 'next/link'
 import { Image } from 'react-datocms'
 import NavigationNode from '../components/navigation-node'
+import Subscribe from '../components/mailchimp-subscribe'
+
 export default function Footer({footer}) {
   const {subscribeHeader, connectHeader, buttonTitle, navigation, socialHeader, socialLinks, partnerHeader, lowerNavigation, copyright, disclaimer, partners } = footer;
   return (
@@ -12,19 +13,20 @@ export default function Footer({footer}) {
               <div className="nov-card nov-card-border">
                 <h4 className="uk-text-uppercase">{subscribeHeader}</h4>
                 <p>Get news and updates about our latest products and offerings</p>
-                <form action={`https://${process.env.MAILCHIMP_DOMAIN}.${process.env.MAILCHIMP_ZONE}.list-manage.com/subscribe/post-json?u=${process.env.MAILCHIMP_USER_ID}&amp;id=${process.env.MAILCHIMP_SUBSCRIBE_LIST}`} method="get" id="mailchimp-subscribe" className="uk-form" >
+                <Subscribe />
+                {/* <form action={`https://${process.env.NEXT_PUBLIC_MAILCHIMP_DOMAIN}.${process.env.NEXT_PUBLIC_MAILCHIMP_ZONE}.list-manage.com/subscribe/post-json?u=${process.env.NEXT_PUBLIC_MAILCHIMP_USER_ID}&amp;id=${process.env.NEXT_PUBLIC_MAILCHIMP_SUBSCRIBE_LIST}`} method="get" id="mailchimp-subscribe" className="uk-form" >
                   <div>
                     <input type="email" name="EMAIL" className="uk-input uk-margin-small-bottom" id="mce-EMAIL" placeholder="Your Email" required />
-                      {/* <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--> */}
+                   
                     <div style={{position: "absolute", left: "-5000px" }} aria-hidden="true">
-                      <input type="text" name={`b_${process.env.MAILCHIMP_USER_ID}_${process.env.MAILCHIMP_SUBSCRIBE_LIST}`} tabIndex="-1"  />  
+                      <input type="text" name={`b_${process.env.NEXT_PUBLIC_MAILCHIMP_USER_ID}_${process.env.NEXT_PUBLIC_MAILCHIMP_SUBSCRIBE_LIST}`} tabIndex="-1"  />  
                     </div>
                     <div>
                       <input type="submit"  name="subscribe" id="mc-embedded-subscribe" className="uk-button uk-button-secondary" />
                     </div>
                   </div>
                   <div id="response" className="uk-margin-small-top"></div>
-                </form>
+                </form> */}
               </div>
             </div>
             <div className="uk-width-1-1 uk-width-1-2@s uk-width-1-4@m">
