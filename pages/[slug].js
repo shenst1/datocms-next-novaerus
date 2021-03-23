@@ -6,7 +6,7 @@ import { request } from "../lib/datocms";
 import { pageFragment, layoutFragment} from "../lib/fragments";
 
 export async function getStaticPaths() {
-  const data = await request({ query: `{ allPages(first: 200) { slug } }` });
+  const data = await request({ query: `{ allPages(first: 100) { slug } }` });
 
   return {
     paths: data.allPages.map((page) => `/${page.slug}`),
