@@ -6,7 +6,7 @@ import { request } from "../../lib/datocms";
 import { layoutFragment, metaTagsFragment, widgets } from "../../lib/fragments";
 import Widgets from "../../components/widgets"
 export async function getStaticPaths() {
-  const data = await request({ query: `{ allApplications { slug } }` });
+  const data = await request({ query: `{ allApplications(first: 200) { slug } }` });
 
   return {
     paths: data.allApplications.map((app) => `/applications/${app.slug}`),
