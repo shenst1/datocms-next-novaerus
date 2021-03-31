@@ -57,8 +57,8 @@ export default function WidgetFindRepresentative({widget: {title, description, b
                           <ul className="uk-list">
                             {phone && <li>Tel: {phone}</li>}
                             {fax && <li>Fax: {fax}</li>}
-                            {email && <li>Email: {fax}</li>}
-                            {url && <li><a href={url} target="_blank">{url}</a></li>}
+                            {email && <li>Email: {email}</li>}
+                            {url && <li><a href={`https://${url}`} target="_blank">{url}</a></li>}
                           </ul>
                         </div>
                       </div>

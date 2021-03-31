@@ -145,7 +145,7 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
                 {aside && <aside dangerouslySetInnerHTML={{__html: aside }} className="uk-margin-medium-bottom" />}
                 {image && 
                   <div className="uk-flex uk-flex-center">
-                    <Image data={{...image.responsiveImage, alt: ''}} style={{maxWidth: "400px", maxHeight: "300px"}} />
+                    <Image data={{...image.responsiveImage, alt: ''}} style={{maxWidth: "400px"}} />
                   </div>
                 }
               </div>
@@ -162,7 +162,7 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
                 {aside && <aside dangerouslySetInnerHTML={{__html: aside }} className="uk-margin-medium-bottom uk-text-large" />}
                 {image && 
                   <div className="uk-flex uk-flex-center">
-                    <Image data={{...image.responsiveImage, alt: ''}} style={{maxWidth: "400px", maxHeight: "300px"}} />
+                    <Image data={{...image.responsiveImage, alt: ''}} style={{maxWidth: "400px" }} />
                   </div>
                 }
               </div>

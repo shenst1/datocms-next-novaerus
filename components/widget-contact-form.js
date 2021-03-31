@@ -43,7 +43,7 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
                 
                 onSubmit={async (values, { setStatus, resetForm }) => {
                   try {
-                    await fetch(`/api/tickets`, {
+                    const response = await fetch(`/api/tickets`, {
                       method: 'POST', 
                       headers: {
                         'Content-Type': 'application/json'
