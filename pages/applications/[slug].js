@@ -7,21 +7,29 @@ import { layoutFragment, metaTagsFragment, widgets } from "../../lib/fragments";
 import Widgets from "../../components/widgets"
 export async function getStaticPaths() {
   const data = await request({ query: `{ allApplications(first: 100) { slug } }` });
-
+  const paths = data.allApplications.flatMap((p) => ([
+    { 
+      params: { slug: p.slug }, 
+      locale: 'en-US' 
+    },
+    {
+      params: { slug: p.slug }
+    }
+  ]))
   return {
-    paths: data.allApplications.map((app) => `/applications/${app.slug}`),
+    paths,
     fallback: false,
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export async function getStaticProps({ params, locale, preview = false }) {
   const graphqlRequest = {
     query: `
-      query ApplicationBySlug($slug: String) {
+      query ApplicationBySlug($slug: String, $locale: SiteLocale) {
         settings: setting {
           ...layoutFragment
         }
-        application(filter: {slug: {eq: $slug}}) {
+        application(locale: $locale, filter: {slug: {eq: $slug}}) {
           backgroundImage {
             responsiveImage(imgixParams: { w: 2560  }) {
               ...responsiveImageFragment
@@ -44,6 +52,7 @@ export async function getStaticProps({ params, preview = false }) {
     preview,
     variables: {
       slug: params.slug,
+      locale: locale === 'en-US' ? 'en_US' : 'en'
     },
   };
 

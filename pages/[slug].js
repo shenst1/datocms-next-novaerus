@@ -7,21 +7,29 @@ import { pageFragment, layoutFragment} from "../lib/fragments";
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allPages(first: 100) { slug } }` });
-
+  const paths = data.allPages.flatMap((p) => ([
+    { 
+      params: { slug: p.slug }, 
+      locale: 'en-US' 
+    },
+    {
+      params: { slug: p.slug }
+    }
+  ]))
   return {
-    paths: data.allPages.map((page) => `/${page.slug}`),
+    paths,
     fallback: false,
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export async function getStaticProps({ params, locale, preview = false }) {
   const graphqlRequest = {
     query: `
-      query PageBySlug($slug: String) {
+      query PageBySlug($slug: String, $locale: SiteLocale) {
         settings: setting {
           ...layoutFragment
         }
-        page(filter: {slug: {eq: $slug}}) {
+        page(locale: $locale, filter: {slug: {eq: $slug}}) {
           ...pageFragment
         }
       }
@@ -31,6 +39,7 @@ export async function getStaticProps({ params, preview = false }) {
     preview,
     variables: {
       slug: params.slug,
+      locale: locale === 'en-US' ? 'en_US' : 'en'
     },
   };
 

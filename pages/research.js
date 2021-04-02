@@ -5,7 +5,7 @@ import { request } from "../lib/datocms";
 import {  layoutFragment, metaTagsFragment } from "../lib/fragments";
 import WidgetHeroCTA from "../components/widget-hero-cta";
 import ResearchFilters from "../components/research-filters"
-export async function getStaticProps({ preview }) {
+export async function getStaticProps({ preview, locale }) {
   const resResearchLink = await fetch(`${process.env.NEXT_PUBLIC_CMSIFY_HOST}/api/collections/link-types.json`);
   const researchLinkCollection = await resResearchLink.json();
   const resLabStudiesCollecton = await fetch(`${process.env.NEXT_PUBLIC_CMSIFY_HOST}/api/collections/lab-studies.json`);

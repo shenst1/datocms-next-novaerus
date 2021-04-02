@@ -8,8 +8,17 @@ import { layoutFragment } from "../../lib/fragments";
 export async function getStaticPaths() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_CMSIFY_HOST}/api/research_articles.json`)
   const {researchArticles} = await res.json()
+  const paths = researchArticles.flatMap((p) => ([
+    { 
+      params: { id: p.id.toString() }, 
+      locale: 'en-US' 
+    },
+    {
+      params: { id: p.id.toString() }
+    }
+  ]))
   return {
-    paths: researchArticles.map(article => `/research/${article.id}`),
+    paths,
     fallback: false,
   };
 }
