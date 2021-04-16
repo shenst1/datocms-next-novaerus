@@ -8,9 +8,23 @@ import NavigationNode from "../components/navigation-node"
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import React from 'react'
 export default function Layout({ preview, children, settings, transparentNavigation = true }) {
-  const router = useRouter()
+  
+  const router = useRouter();
+  const asPath = router.asPath.substring(1);
 
-  const asPath = router.asPath.substring(1)
+  useEffect(() => {
+    // TODO: save this result to local storage
+    // Using the next.js api adds an extra api call, but it protects the prive info of the country service
+    const checkRequestCountry = async () => {
+      const res = await fetch("/api/country");
+      const data = await res.json()
+      if (router.locale !== "en-US" && data.countryCode === "US" ) {
+        router.push(router.asPath, router.asPath, { locale: 'en-US' })
+      }
+    };
+    checkRequestCountry();
+  }, [])
+  
   useEffect(() => {
     const handleRouteChange = () => {
       UIkit.offcanvas('#mobile-navigation').hide()
@@ -20,6 +34,7 @@ export default function Layout({ preview, children, settings, transparentNavigat
       router.events.off('routeChangeStart', handleRouteChange)
     }
   }, [])
+
   const [origin, setOrigin] = useState()
   useEffect(() => {
     setOrigin(window.location.origin)
@@ -130,7 +145,6 @@ export default function Layout({ preview, children, settings, transparentNavigat
                     <li className="uk-hidden@m">
                       <NavigationNode node={node} />
                     </li>
-
                   </React.Fragment>
                 )
               }
@@ -141,7 +155,6 @@ export default function Layout({ preview, children, settings, transparentNavigat
                     <li>
                       <NavigationNode node={node} />
                     </li>
-
                   </React.Fragment>
                 )
               }

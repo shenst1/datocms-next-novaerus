@@ -22,12 +22,16 @@ export default function WidgetProductsPreview({widget: {title, thumbnail, body, 
           <div className="uk-flex-none">
             <div dangerouslySetInnerHTML={{ __html: product.shortDescription }}></div>
           </div>
-          <div className="uk-text-right uk-flex-none">
-            <div className="uk-link nov-button-icon-link uk-flex uk-flex-inline uk-flex-middle nov-text-semibold">
-              <span>{cardLink.label}</span>
-              <i className="icomoon-arrow-right-circle"></i>
-            </div>
-          </div>
+          {
+            cardLink && 
+              <div className="uk-text-right uk-flex-none">
+                <div className="uk-link nov-button-icon-link uk-flex uk-flex-inline uk-flex-middle nov-text-semibold">
+                  <span>{cardLink.label}</span>
+                  <i className="icomoon-arrow-right-circle"></i>
+                </div>
+              </div>
+          }
+         
         </div>
       </div>
     )
