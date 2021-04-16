@@ -84,23 +84,17 @@ export default function Layout({ preview, children, settings, transparentNavigat
                     </a>
                   </Link>
                 </li>
-               
               </ul>
             </div>
             <div className="uk-navbar-right">
-              <ul className="uk-navbar-nav">
-                <li className="uk-visible@m">
-                  <Link href={"/contact-us"}>
-                    <a className="nov-text-semibold">
-                      <i className="icomoon-message-square"></i> Contact
-                    </a>
-                  </Link>
-                </li>
-                <li className="uk-visible@m">
-                  <a href={"https://partners.novaerus.com/logins/sign_in"} className="nov-text-semibold" target="_blank">
-                    <i className="icomoon-lock"></i> Partner login
-                  </a>
-                </li>
+              <ul className="uk-navbar-nav uk-visible@m">
+                {
+                  settings.iconLinks.map((iconLink) => 
+                    <li key={iconLink.id}>
+                      <NavigationNode className="nov-text-semibold" left node={iconLink.navigationNode} icon={"icomoon-" + iconLink.icomoonIconName} />
+                    </li>
+                  )
+                }
               </ul>
             </div>
           </nav>
@@ -154,20 +148,16 @@ export default function Layout({ preview, children, settings, transparentNavigat
             </ul>
         
             <ul className="uk-nav-default" uk-nav="">
-              <li className="uk-nav-divider"></li>
-              <li>
-                <Link href={"/contact-us"}>
-                  <a className="nov-text-semibold uk-text-uppercase">
-                    <i className="icomoon-message-square"></i> Contact
-                  </a>
-                </Link>
-              </li>
-              <li className="uk-nav-divider"></li>
-              <li>
-                <a href={"https://partners.novaerus.com/logins/sign_in"} className="nov-text-semibold uk-text-uppercase" target="_blank">
-                  <i className="icomoon-lock"></i> Partner login
-                </a>
-              </li>
+              {
+                settings.iconLinks.map((iconLink) => 
+                  <React.Fragment key={iconLink.id}>
+                    <li className="uk-nav-divider"></li>
+                    <li key={iconLink.id}>
+                      <NavigationNode className="nov-text-semibold uk-text-uppercase" left node={iconLink.navigationNode} icon={"icomoon-" + iconLink.icomoonIconName} />
+                    </li>
+                  </React.Fragment>
+                )
+              }
               <li className="uk-nav-divider"></li>
             </ul>
           </div>

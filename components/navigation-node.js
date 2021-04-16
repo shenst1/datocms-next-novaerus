@@ -32,7 +32,7 @@ export default function NavigationNode({node, right, left, icon, children, ...re
     )
   } else if (node.externalLink) {
     return (
-      <a href={node.externalLink} target="_blank"{...rest} >{node.label}</a>
+      <a href={node.externalLink} target="_blank"{...rest} >{inner()}</a>
     )
   } else if (node.internalLink) {
     return (

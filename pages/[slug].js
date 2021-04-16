@@ -7,13 +7,13 @@ import { pageFragment, layoutFragment} from "../lib/fragments";
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allPages(first: 100) { slug } }` });
-  const paths = data.allPages.flatMap((p) => ([
+  const paths = data.allPages.flatMap(({slug}) => ([
     { 
-      params: { slug: p.slug }, 
+      params: { slug }, 
       locale: 'en-US' 
     },
     {
-      params: { slug: p.slug }
+      params: { slug }
     }
   ]))
   return {

@@ -7,13 +7,13 @@ import { layoutFragment, metaTagsFragment, widgets } from "../../lib/fragments";
 import Widgets from "../../components/widgets"
 export async function getStaticPaths() {
   const data = await request({ query: `{ allApplications(first: 100) { slug } }` });
-  const paths = data.allApplications.flatMap((p) => ([
+  const paths = data.allApplications.flatMap(({slug}) => ([
     { 
-      params: { slug: p.slug }, 
-      locale: 'en-US' 
+      params: { slug },
+      locale: 'en-US'
     },
     {
-      params: { slug: p.slug }
+      params: { slug }
     }
   ]))
   return {
@@ -41,9 +41,7 @@ export async function getStaticProps({ params, locale, preview = false }) {
           }
           header
           leadText
-         
           ${widgets}
-         
         }
       }
       ${metaTagsFragment}
