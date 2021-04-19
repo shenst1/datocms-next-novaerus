@@ -1,11 +1,11 @@
-import { request } from "../../lib/datocms";
-
 export default async (req, res) => {
-  // console.log(req.connection.remoteAddress)
+  
   const response = await fetch("https://telize-v1.p.rapidapi.com/location", {
     headers: {
-      "x-forwarded-for": req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-      "x-rapidapi-key": "ee75ee8f33msh36c6e21354d4f83p1ff754jsnb9dda40ec23e",
+      ...(req.connection.remoteAddress !== "127.0.0.1" && {
+        "x-forwarded-for": req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+      }),
+      "x-rapidapi-key": process.env.TELIZE_RAPID_API_KEY,
       "x-rapidapi-host": "telize-v1.p.rapidapi.com",
       "useQueryString": true
     }
