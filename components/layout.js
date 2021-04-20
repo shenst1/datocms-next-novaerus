@@ -18,7 +18,7 @@ export default function Layout({ preview, children, settings, transparentNavigat
     const checkRequestCountry = async () => {
       const res = await fetch("/api/country");
       const data = await res.json()
-      if (router.locale !== "en-US" && data.countryCode === "US" ) {
+      if (router.locale !== "en-US" && data.country_code === "US" ) {
         router.push(router.asPath, router.asPath, { locale: 'en-US' })
       }
     };
