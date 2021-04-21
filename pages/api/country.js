@@ -1,5 +1,6 @@
 export default async (req, res) => {
   // Geolocation redirect won't work locally because it will think the IP is the host
+  // Dublin test IP address "37.228.255.15"
   const response = await fetch("https://telize-v1.p.rapidapi.com/location", {
     headers: {
       "x-forwarded-for": req.headers['x-forwarded-for'] || req.connection.remoteAddress,

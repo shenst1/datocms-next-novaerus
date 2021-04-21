@@ -20,7 +20,8 @@ export default function Layout({ preview, children, settings, transparentNavigat
       const data = await res.json()
       if (router.locale !== "en-US" && data.country_code === "US" ) {
         router.push(router.asPath, router.asPath, { locale: 'en-US' })
-      } else if (router.locale === "en-US" && data.country_code !== "US") {
+      } 
+      if (router.locale === "en-US" && data.country_code !== "US") {
         router.push(router.asPath, router.asPath, { locale: '' })
       }
     };
