@@ -14,12 +14,14 @@ export default function Layout({ preview, children, settings, transparentNavigat
 
   useEffect(() => {
     // TODO: save this result to local storage
-    // Using the next.js api adds an extra api call, but it protects the prive info of the country service
+    // Using the next.js api adds an extra api call, but it protects the private info of the telize country service
     const checkRequestCountry = async () => {
       const res = await fetch("/api/country");
       const data = await res.json()
       if (router.locale !== "en-US" && data.country_code === "US" ) {
         router.push(router.asPath, router.asPath, { locale: 'en-US' })
+      } else if (router.locale === "en-US" && data.country_code !== "US") {
+        router.push(router.asPath, router.asPath, { locale: '' })
       }
     };
     checkRequestCountry();
