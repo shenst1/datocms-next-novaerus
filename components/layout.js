@@ -18,10 +18,13 @@ export default function Layout({ preview, children, settings, transparentNavigat
     const checkRequestCountry = async () => {
       const res = await fetch("/api/country");
       const data = await res.json()
+      console.log("your location information is ", data)
       if (router.locale !== "en-US" && data.country_code === "US" ) {
+        console.log("redirected because you are in the US, but your URL isn't US")
         router.push(router.asPath, router.asPath, { locale: 'en-US' })
       } 
       if (router.locale === "en-US" && data.country_code !== "US") {
+        console.log("redirected because you are not in the US, but your is US")
         router.push(router.asPath, router.asPath, { locale: '' })
       }
     };
