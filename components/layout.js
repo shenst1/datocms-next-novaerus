@@ -25,7 +25,7 @@ export default function Layout({ preview, children, settings, transparentNavigat
       } 
       if (router.locale === "en-US" && data.country_code !== "US") {
         console.log("redirected because you are not in the US, but your is US")
-        router.push(router.asPath, router.asPath, { locale: '' })
+        router.push(router.asPath, router.asPath, { locale: 'en-UK' })
       }
     };
     checkRequestCountry();
