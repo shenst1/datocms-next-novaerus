@@ -1,6 +1,6 @@
 
 import { Formik, Field, ErrorMessage } from 'formik';
-export default function WidgetContactForm({widget: {customerSupportLabel, customerSupportBody, formLabel, successMessage, loadingMessage, emailRecipient}}) {
+export default function WidgetContactForm({widget: {customerSupportLabel, customerSupportBody, formLabel, successMessage, loadingMessage, emailRecipient, disclaimer}}) {
   return (
     <div className="uk-section">
       <div className="uk-container uk-container-small">
@@ -98,6 +98,9 @@ export default function WidgetContactForm({widget: {customerSupportLabel, custom
                     <button type="submit" className="btn uk-button uk-button-secondary" disabled={isSubmitting}>
                      { isSubmitting ? (<>{loadingMessage}&nbsp;<div uk-spinner="" /></>) : "Submit" }
                     </button>
+                    <p class="uk-text-small">
+                      {disclaimer}
+                    </p>
                     {
                       status === "success" && 
                         <div className="uk-alert-primary" uk-alert="">

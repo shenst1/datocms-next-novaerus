@@ -5,11 +5,11 @@ import Widgets from "../components/widgets";
 import { request } from "../lib/datocms";
 import {  pageFragment, layoutFragment } from "../lib/fragments";
 
-export async function getStaticProps({ preview }) {
+export async function getStaticProps({ preview, locale }) {
   const graphqlRequest = {
     query: `
-      {
-        settings: setting {
+      query HomePage($locale: SiteLocale) {
+        settings: setting(locale: $locale) {
           homePage {
             ...pageFragment
           }
@@ -20,6 +20,9 @@ export async function getStaticProps({ preview }) {
       ${pageFragment}
     `,
     preview,
+    variables: {
+      locale: locale === 'en-US' ? 'en_US' : 'en'
+    },
   };
 
   return {

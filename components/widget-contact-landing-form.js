@@ -3,7 +3,7 @@ import { Formik, Field, ErrorMessage } from 'formik';
 import {Image } from "react-datocms"
 import { useRouter } from 'next/router'
 
-export default function WidgetContactLandingForm({widget: {title, aside, buttonLabel, successMessage, loadingMessage, emailRecipient, showSector, showMessage, image, alignment}}) {
+export default function WidgetContactLandingForm({widget: {title, aside, buttonLabel, successMessage, loadingMessage, emailRecipient, showSector, showMessage, image, alignment, disclaimer}}) {
   const router = useRouter()
   const contactForm = () => {
     return (
@@ -114,6 +114,9 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
             <button type="submit" className="btn uk-button uk-button-secondary" disabled={isSubmitting}>
             { isSubmitting ? (<>{loadingMessage}&nbsp;<div uk-spinner="" /></>) : buttonLabel }
             </button>
+            <p class="uk-text-small">
+            {disclaimer}
+            </p>
             {
               status === "success" && 
                 <div className="uk-alert-primary" uk-alert="">

@@ -54,7 +54,7 @@ export default function Layout({ preview, children, settings, transparentNavigat
   return (
     <>
       <Head>
-          <link rel="stylesheet" href="//s3.amazonaws.com/icomoon.io/29147/NOV-Novaerus/style.css?jdh7bk" />
+          <link rel="stylesheet" href="https://d1azc1qln24ryf.cloudfront.net/29147/NOV-Novaerus/style-cf.css?8jlnqz" />
       </Head>
       {/* uk-scrollspy="target: img:not(.nov-scrollspy-ignore); cls:uk-animation-fade; delay: 100" */}
       <div className="uk-offcanvas-content">
