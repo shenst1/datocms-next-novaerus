@@ -3,7 +3,11 @@ import { Formik, Field, ErrorMessage } from 'formik';
 import {Image } from "react-datocms"
 import { useRouter } from 'next/router'
 
-export default function WidgetContactLandingForm({widget: {title, aside, buttonLabel, successMessage, loadingMessage, emailRecipient, showSector, showMessage, image, alignment, disclaimer}}) {
+export default function WidgetContactLandingForm({widget: {
+  title, aside, buttonLabel, successMessage, loadingMessage, 
+  emailRecipient, showSector, showMessage, image, alignment, 
+  showCountry, showJobTitle, requireSector, disclaimer, formLead,
+  requireMessage }}) {
   const router = useRouter()
   const contactForm = () => {
     return (
@@ -15,6 +19,8 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
           phone: "",
           email: "",
           sector: "",
+          country: "",
+          job_title: "",
           referral: router.query.slug,
           recipient: emailRecipient
         }}
@@ -26,11 +32,23 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
             errors.email = 'Invalid email address';
           }
         
-          if (!values.description && showMessage) {
+          if (!values.description && showMessage && requireMessage) {
             errors.description = 'Required'
           }
-          if (!values.sector && showSector) {
+          if (!values.country && showCountry) {
+            errors.country = 'Required'
+          }
+          if (!values.job_title && showJobTitle) {
+            errors.job_title = 'Required'
+          }
+          if (!values.sector && showSector && requireSector) {
             errors.description = 'Required'
+          }
+          if (!values.phone) {
+            errors.phone = 'Required'
+          }
+          if (!values.title) {
+            errors.title = 'Required'
           }
           if (!values.name) {
             errors.name = 'Required'
@@ -67,25 +85,6 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
         }) => (
           <form onSubmit={handleSubmit}>
             <div className="uk-margin">
-              <label className="uk-form-label">Company name</label>
-              <Field type="text" placeholder="Acme inc" className="uk-input" name="title" />
-            </div>
-            {
-              showSector && 
-                <div className="uk-margin">
-                  <abbr title="required">*</abbr>
-                  <label className="uk-form-label">Sector</label>
-                  <Field as="select" placeholder="yourname@example.com" className="uk-input" name="sector" >
-                    <option value="">Select one</option>
-                    <option value="Dental">Dental</option>
-                    <option value="Medical">Medical</option>
-                    <option value="Non-Medical">Non-Medical</option>
-                  </Field>
-                  <ErrorMessage name="sector" component="div" className="uk-text-danger" />
-                </div>
-            }
-           
-            <div className="uk-margin">
               <abbr title="required">*</abbr>
               <label className="uk-form-label">Full name</label>
               <Field type="text" placeholder="Preferred name" className="uk-input" name="name" />
@@ -98,13 +97,65 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
               <ErrorMessage name="email" component="div" className="uk-text-danger" />
             </div>
             <div className="uk-margin">
+              <abbr title="required">*</abbr>
               <label className="uk-form-label">Phone</label>
               <Field type="phone" placeholder="555-555-5555" className="uk-input" name="phone" />
+              <ErrorMessage name="phone" component="div" className="uk-text-danger" />
             </div>
+            {
+              showJobTitle && 
+                <div className="uk-margin">
+                  <abbr title="required">*</abbr>
+                  
+                  <label className="uk-form-label">Job Title</label>
+                  <Field as="select" placeholder="yourname@example.com" className="uk-input" name="job_title" >
+                    <option value="">Select one</option>
+                    <option value="C-Suite/VP">C-Suite/VP</option>
+                    <option value="Director">Director</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Engineer/Analyst">Engineer/Analyst</option>
+                    <option value="Student/Educator">Student/Educator</option>
+                    <option value="Other">Other</option>
+                  </Field>
+                  <ErrorMessage name="job_title" component="div" className="uk-text-danger" />
+                </div>
+            }
+            <div className="uk-margin">
+              <abbr title="required">*</abbr>
+              <label className="uk-form-label">Company name</label>
+              <Field type="text" placeholder="Acme inc" className="uk-input" name="title" />
+              <ErrorMessage name="title" component="div" className="uk-text-danger" />
+            </div>
+            {
+              showSector && 
+                <div className="uk-margin">
+                  {
+                    requireSector && <abbr title="required">*</abbr>
+                  }
+                  <label className="uk-form-label">Sector</label>
+                  <Field as="select" placeholder="yourname@example.com" className="uk-input" name="sector" >
+                    <option value="">Select one</option>
+                    <option value="Dental">Dental</option>
+                    <option value="Medical">Medical</option>
+                    <option value="Non-Medical">Non-Medical</option>
+                  </Field>
+                  <ErrorMessage name="sector" component="div" className="uk-text-danger" />
+                </div>
+            }
+            <div className="uk-margin">
+              <abbr title="required">*</abbr>
+              <label className="uk-form-label">Country</label>
+              <Field type="text"  className="uk-input" name="country" />
+              <ErrorMessage name="country" component="div" className="uk-text-danger" />
+            </div>
+           
             {
               showMessage && 
                 <div className="uk-margin">
-                  <abbr title="required">*</abbr>
+                  {
+                    requireMessage && <abbr title="required">*</abbr>
+                  }
+                 
                   <label className="uk-form-label">Message</label>
                   <Field as="textarea" rows={5} placeholder="Type your message here" className="uk-textarea" name="description" />
                   <ErrorMessage name="description" component="div" className="uk-text-danger" />
@@ -154,6 +205,7 @@ export default function WidgetContactLandingForm({widget: {title, aside, buttonL
               </div>
               <div>
                 <div className="nov-card">
+                  { formLead && <div dangerouslySetInnerHTML={{ __html: formLead }} /> }
                   { contactForm() }
                 </div>
               </div>
