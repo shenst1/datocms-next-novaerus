@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 export default function WidgetContactLandingForm({widget: {
   title, aside, buttonLabel, successMessage, loadingMessage, 
   emailRecipient, showSector, showMessage, image, alignment, 
-  showCountry, showJobTitle, requireSector, disclaimer, formLead,
+  showCountry, showJobTitle, showCompanyName, requireSector, disclaimer, formLead,
   requireMessage }}) {
   const router = useRouter()
   const contactForm = () => {
@@ -47,7 +47,7 @@ export default function WidgetContactLandingForm({widget: {
           if (!values.phone) {
             errors.phone = 'Required'
           }
-          if (!values.title) {
+          if (!values.title && showCompanyName) {
             errors.title = 'Required'
           }
           if (!values.name) {
@@ -120,12 +120,15 @@ export default function WidgetContactLandingForm({widget: {
                   <ErrorMessage name="job_title" component="div" className="uk-text-danger" />
                 </div>
             }
-            <div className="uk-margin">
-              <abbr title="required">*</abbr>
-              <label className="uk-form-label">Company name</label>
-              <Field type="text" placeholder="Acme inc" className="uk-input" name="title" />
-              <ErrorMessage name="title" component="div" className="uk-text-danger" />
-            </div>
+            {
+              showCompanyName && 
+                <div className="uk-margin">
+                  <abbr title="required">*</abbr>
+                  <label className="uk-form-label">Company name</label>
+                  <Field type="text" placeholder="Acme inc" className="uk-input" name="title" />
+                  <ErrorMessage name="title" component="div" className="uk-text-danger" />
+                </div>
+            }
             {
               showSector && 
                 <div className="uk-margin">
@@ -142,12 +145,16 @@ export default function WidgetContactLandingForm({widget: {
                   <ErrorMessage name="sector" component="div" className="uk-text-danger" />
                 </div>
             }
-            <div className="uk-margin">
-              <abbr title="required">*</abbr>
-              <label className="uk-form-label">Country</label>
-              <Field type="text"  className="uk-input" name="country" />
-              <ErrorMessage name="country" component="div" className="uk-text-danger" />
-            </div>
+            {
+              showCountry && 
+                <div className="uk-margin">
+                  <abbr title="required">*</abbr>
+                  <label className="uk-form-label">Country</label>
+                  <Field type="text"  className="uk-input" name="country" />
+                  <ErrorMessage name="country" component="div" className="uk-text-danger" />
+                </div>
+            }
+            
            
             {
               showMessage && 
