@@ -16,12 +16,18 @@ export default function Layout({ preview, children, settings, transparentNavigat
     // TODO: save this result to local storage
     // Using the next.js api adds an extra api call, but it protects the private info of the telize country service
     const checkRequestCountry = async () => {
-      const res = await fetch("/api/country");
-      const data = await res.json()
-      if (router.locale !== "en-US" && data.country_code === "US" ) {
+      let countryCode = localStorage.getItem('countryCode')
+      if (!countryCode || countryCode === 'undefined') {
+        const res = await fetch("/api/country");
+        const data = await res.json();
+        countryCode = data.country_code;
+        localStorage.setItem('countryCode', countryCode)
+      }
+      
+      if (router.locale !== "en-US" && countryCode === "US" ) {
         router.push(router.asPath, router.asPath, { locale: 'en-US' })
       } 
-      if (router.locale === "en-US" && data.country_code !== "US") {
+      if (router.locale === "en-US" && countryCode !== "US") {
         router.push(router.asPath, router.asPath, { locale: 'en-UK' })
       }
     };
