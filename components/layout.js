@@ -75,7 +75,7 @@ export default function Layout({ preview, children, settings, transparentNavigat
           {preview && 
             <div className="uk-position-top-left uk-position-z-index">
               <a href="/api/exit-preview" className="uk-button uk-button-small uk-button-danger">Exit Preview Mode</a>
-              <CopyToClipboard text={`${origin}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_SECRET}&path=${asPath}`}
+              <CopyToClipboard text={`${origin}/api/preview?secret=${process.env.NEXT_PUBLIC_PREVIEW_SECRET}&slug=${asPath}`}
                 onCopy={copyToClipboardSuccess}>
                 <button className="uk-button uk-button-small uk-button-danger" style={{marginLeft: "3px" }}>
                   <svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

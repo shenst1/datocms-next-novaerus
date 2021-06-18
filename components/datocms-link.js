@@ -1,5 +1,4 @@
 export default function DatocmsLink({modelId, itemId, friendlyName}) {
-
   return (
     <div className="uk-position-relative">
       <div className="uk-position-center" style={{marginTop: "-15px"}}>
