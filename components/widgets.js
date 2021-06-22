@@ -23,7 +23,7 @@ import WidgetSixColumnGrid from "./widget-six-column-grid";
 import WidgetTestimonialCardGrid from "./widget-testimonial-card-grid";
 import WidgetIconModal from "./widget-icon-modal";
 
-export default function Widgets({widgets, preview}) {
+export default function Widgets({widgets, preview, itemTypes}) {
   function renderWidget(widget) {
     switch (widget.__typename) {
       case "WidgetIconModalSectionRecord":
@@ -31,7 +31,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetIconModal widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="605812" friendlyName="Icon Modal Illustration" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_icon_modal_section']} friendlyName="Icon Modal Illustration" />
             </>
           )
         } else {
@@ -44,7 +44,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetTestimonialCardGrid widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="583205" friendlyName="Testimonial Card Grid" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_testimonial_card_grid']} friendlyName="Testimonial Card Grid" />
             </>
           )
         } else {
@@ -57,7 +57,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetSixColumnGrid widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="583165" friendlyName="Six Column Grid" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_six_column_grid']} friendlyName="Six Column Grid" />
             </>
           )
         } else {
@@ -70,7 +70,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetImageText widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="581647" friendlyName="Image Text" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_image_text']} friendlyName="Image Text" />
             </>
           )
         } else {
@@ -83,7 +83,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetSolutionsGrid widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="581688" friendlyName="Solutions Grid" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_solutions_grid']} friendlyName="Solutions Grid" />
             </>
           )
         } else {
@@ -96,7 +96,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetContactLandingForm widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="577204" friendlyName="Contact Landing Form" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_contact_landing_form']} friendlyName="Contact Landing Form" />
             </>
           )
         } else {
@@ -108,7 +108,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetTestimonialCarousel widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="545413" friendlyName="Testimonial Carousel" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_testimonial_carousel']} friendlyName="Testimonial Carousel" />
             </>
           )
         } else {
@@ -120,7 +120,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetHeroSlideshow widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="574151" friendlyName="Hero Slideshow" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_hero_slideshow']} friendlyName="Hero Slideshow" />
             </>
           )
         } else {
@@ -132,7 +132,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetContactForm widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="571889" friendlyName="Contact Form" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_contact_form']} friendlyName="Contact Form" />
             </>
           )
         } else {
@@ -144,7 +144,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetHeroVideo widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="561671" friendlyName="Hero Video" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_hero_video']} friendlyName="Hero Video" />
             </>
           )
         } else {
@@ -156,7 +156,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetFindRepresentative widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="557353" friendlyName="Find a Representative" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_find_a_representative']} friendlyName="Find a Representative" />
             </>
           )
         } else {
@@ -168,7 +168,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetSection widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="553694" friendlyName="Section" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_section']} friendlyName="Section" />
             </>
           )
         } else {
@@ -180,7 +180,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetFactsStats widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="553301" friendlyName="Facts &nbsp; Stats" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_facts_stats_section']} friendlyName="Facts &nbsp; Stats" />
             </>
           )
         } else {
@@ -192,7 +192,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetHero widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="553172" friendlyName="Hero" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_hero']} friendlyName="Hero" />
             </>
           )
         } else {
@@ -204,7 +204,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetVideoTabs widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="553258" friendlyName="Video Tabs" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_video_tabs_section']} friendlyName="Video Tabs" />
             </>
           )
         } else {
@@ -216,7 +216,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetTwoColumnVideoCta widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="553118" friendlyName="Two Column Video Ctas" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_two_column_video_cta']} friendlyName="Two Column Video Ctas" />
             </>
           )
         } else {
@@ -228,7 +228,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetProductDetails widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="551901" friendlyName="Product Detail Grid" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_product_detail_grid']} friendlyName="Product Detail Grid" />
             </>
           )
         } else {
@@ -240,7 +240,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetTextImage widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="534054" friendlyName="Text Image" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_text_image']} friendlyName="Text Image" />
             </>
           )
         } else {
@@ -252,7 +252,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetOverlaidImage widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="543093" friendlyName="Overlaid Image" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_overlaid_image']} friendlyName="Overlaid Image" />
             </>
           )
         } else {
@@ -264,7 +264,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetProductsPreview widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="543208" friendlyName="Products Preview" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_products_preview']} friendlyName="Products Preview" />
             </>
           )
         } else {
@@ -276,7 +276,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetHeroCTA widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="545566" friendlyName="Hero CTA" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_hero_cta']} friendlyName="Hero CTA" />
             </>
           )
         } else {
@@ -288,7 +288,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetHeader widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="534046" friendlyName="Header" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_text_header']}  friendlyName="Header" />
             </>
           )
         } else {
@@ -300,7 +300,7 @@ export default function Widgets({widgets, preview}) {
           return (
             <>
               <WidgetApplicationGrid widget={widget} />
-              <DatocmsLink itemId={widget.id} modelId="548046" friendlyName="Hero" />
+              <DatocmsLink itemId={widget.id} modelId={itemTypes['widget_application_grid']} friendlyName="Hero" />
             </>
           )
         } else {

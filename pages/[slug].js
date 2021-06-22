@@ -4,6 +4,7 @@ import Layout from "../components/layout";
 import Widgets from "../components/widgets";
 import { request } from "../lib/datocms";
 import { pageFragment, layoutFragment} from "../lib/fragments";
+import {SiteClient} from "datocms-client"
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allPages(first: 100) { slug } }` });
@@ -23,6 +24,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, locale, preview = false }) {
+  const client = new SiteClient(process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN);
+  const items = await client.itemTypes.all()
+  const itemTypes =  items.reduce((acc, item) => {
+    acc[item.apiKey] = item.id
+    return acc
+  }, {})
   const graphqlRequest = {
     query: `
       query PageBySlug($slug: String, $locale: SiteLocale) {
@@ -49,6 +56,7 @@ export async function getStaticProps({ params, locale, preview = false }) {
       subscription: preview
         ? {
             ...graphqlRequest,
+            itemTypes,
             initialData: await request(graphqlRequest),
             token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
           }
@@ -60,7 +68,7 @@ export async function getStaticProps({ params, locale, preview = false }) {
   };
 }
 
-export default function Page({ subscription, preview }) {
+export default function Page({ subscription, preview, subscription: { itemTypes } }) {
   const {
     data: { settings, page },
   } = useQuerySubscription(subscription);
@@ -69,7 +77,7 @@ export default function Page({ subscription, preview }) {
   return (
     <Layout settings={settings} preview={preview} transparentNavigation={page.transparentNavigation}>
       <Head>{renderMetaTags(metaTags)}</Head>
-      <Widgets widgets={page.widgets} preview={preview} />
+      <Widgets itemTypes={itemTypes} widgets={page.widgets} preview={preview} />
     </Layout>
   );
 }

@@ -5,7 +5,10 @@ import ApplicationShow from "../../components/application-show";
 import { request } from "../../lib/datocms";
 import { layoutFragment, metaTagsFragment, widgets } from "../../lib/fragments";
 import Widgets from "../../components/widgets"
+import {SiteClient} from "datocms-client"
+
 export async function getStaticPaths() {
+
   const data = await request({ query: `{ allApplications(first: 100) { slug } }` });
   const paths = data.allApplications.flatMap(({slug}) => ([
     { 
@@ -23,6 +26,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, locale, preview = false }) {
+  const client = new SiteClient(process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN);
+  const items = await client.itemTypes.all()
+  const itemTypes =  items.reduce((acc, item) => {
+    acc[item.apiKey] = item.id
+    return acc
+  }, {})
   const graphqlRequest = {
     query: `
       query ApplicationBySlug($slug: String, $locale: SiteLocale) {
@@ -60,6 +69,7 @@ export async function getStaticProps({ params, locale, preview = false }) {
       subscription: preview
         ? {
             ...graphqlRequest,
+            itemTypes,
             initialData: await request(graphqlRequest),
             token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
           }
@@ -71,7 +81,7 @@ export async function getStaticProps({ params, locale, preview = false }) {
   };
 }
 
-export default function Application({ subscription, preview }) {
+export default function Application({ subscription, preview, subscription: {itemTypes} }) {
   const {
     data: { settings, application },
   } = useQuerySubscription(subscription);
@@ -82,7 +92,7 @@ export default function Application({ subscription, preview }) {
     <Layout settings={settings} preview={preview} transparentNavigation={false}>
       <Head>{renderMetaTags(metaTags)}</Head>
       <ApplicationShow application={application} />
-      <Widgets widgets={application.widgets} preview={preview} />
+      <Widgets itemTypes={itemTypes} widgets={application.widgets} preview={preview} />
     </Layout>
   );
 }
