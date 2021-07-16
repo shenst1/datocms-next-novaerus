@@ -40,10 +40,10 @@ export default function NavigationNode({node, right, left, icon, children, ...re
         <a {...rest}>{node.label}</a>
       </Link>
     )
-  } else {
-    return (
-      <a {...rest}>{node.label}</a>
-    )
-  }
+  } 
+  return (
+    <a {...rest}>{node.label}</a>
+  )
+  
  
 }
